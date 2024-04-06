@@ -12,8 +12,8 @@ const allUsersSlice = createSlice({
     store: (state, action: PayloadAction<User[]>) => {
       state.value = action.payload;
     },
-    add: (state, action: PayloadAction<User>) => {
-      state.value.push(action.payload);
+    add: (state, action: PayloadAction<User[]>) => {
+      state.value.push(...action.payload);
     },
   },
 });
