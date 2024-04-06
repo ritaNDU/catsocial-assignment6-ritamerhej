@@ -26,5 +26,5 @@ export type Post = {
   imageUri: string;
   likes: number;
   comments: Comment[];
-  publicationDate: Date;
+  publicationDate: string;
 };

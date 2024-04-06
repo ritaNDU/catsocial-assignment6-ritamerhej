@@ -1,11 +1,7 @@
 import {StyleSheet} from 'react-native';
-import theme from '../../styles/theme';
 
 const styles = StyleSheet.create({
-  deviceNotSupportedText: {
-    fontSize: theme.fontSize.normal,
-    color: theme.colors.textColor,
-  },
+  deviceNotSupportedText: {},
   deviceNotSupportedContainer: {
     height: '100%',
     width: '100%',
