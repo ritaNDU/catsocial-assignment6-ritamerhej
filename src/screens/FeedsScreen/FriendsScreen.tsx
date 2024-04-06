@@ -4,7 +4,6 @@ import useManageUsersFetching from '../../hooks/useManageUsersFetching';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
 import {USERS_LIMIT} from '../../service/api.data';
 import PersonCardsList from '../../components/organisms/PersonCardsList';
-import LoadMoreButton from '../../components/atoms/Buttons/LoadMoreButton';
 
 const FriendsScreen = () => {
   const {
@@ -32,11 +31,6 @@ const FriendsScreen = () => {
         isRefreshing={refresh}
         onRefresh={handleRefresh}
         handleLoadMore={handleLoadMore(pageToFetch)}
-        isLoading={isLoading}
-        endReached={endReached}
-      />
-      <LoadMoreButton
-        onPress={handleLoadMore(pageToFetch)}
         isLoading={isLoading}
         endReached={endReached}
       />
