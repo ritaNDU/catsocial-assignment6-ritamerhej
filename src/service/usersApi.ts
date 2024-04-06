@@ -91,8 +91,9 @@ export async function getUserFromApi(userId: string) {
     friendsIds: [],
     avatar: '',
   };
+
   if (response) {
-    const data = response.data;
+    const data = response.data[0];
     user = {
       id: data.id,
       name: data.name,
