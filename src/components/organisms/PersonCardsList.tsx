@@ -4,27 +4,31 @@ import {User} from '../../data/data.types';
 import PersonCard from '../molecules/PersonCard';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
 import {modifyUserFromApi} from '../../service/usersApi';
+import LoadMoreButton from '../atoms/Buttons/LoadMoreButton';
 
 type Props = {
   peopleList: User[];
   isRefreshing?: boolean;
   onRefresh?: () => void;
-  areFriends: boolean;
+  handleLoadMore: () => void;
+  isLoading: boolean;
+  endReached: boolean;
 };
 
 const PersonCardsList = ({
   peopleList,
   isRefreshing,
   onRefresh,
-  areFriends,
+  handleLoadMore,
+  isLoading,
+  endReached,
 }: Props) => {
   const {signedInUser, loadSignedInUser} = useManageSingedInUser();
 
   const manageFriend = (friendId: string) => async () => {
-    const updatedFriendsId =
-      areFriends && signedInUser.friendsIds.includes(friendId)
-        ? signedInUser.friendsIds.filter(id => id !== friendId)
-        : [...signedInUser.friendsIds, friendId];
+    const updatedFriendsId = signedInUser.friendsIds.includes(friendId)
+      ? signedInUser.friendsIds.filter(id => id !== friendId)
+      : [...signedInUser.friendsIds, friendId];
 
     const modifiedUser = {...signedInUser, friendsIds: updatedFriendsId};
 
@@ -33,6 +37,7 @@ const PersonCardsList = ({
   };
 
   const renderItem = ({item}: {item: User}) => {
+    const areFriends = signedInUser.friendsIds.includes(item.id);
     return (
       <PersonCard
         isFriend={areFriends}
@@ -48,10 +53,17 @@ const PersonCardsList = ({
         renderItem={renderItem}
         refreshing={isRefreshing}
         onRefresh={onRefresh}
+        ListFooterComponent={
+          <LoadMoreButton
+            onPress={handleLoadMore}
+            isLoading={isLoading}
+            endReached={endReached}
+          />
+        }
       />
     );
   } else {
-    return <Text>No cat parents registered yet!</Text>;
+    return <Text>No cat parents to show!</Text>;
   }
 };
 

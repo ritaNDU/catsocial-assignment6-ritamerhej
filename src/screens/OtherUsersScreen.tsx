@@ -3,7 +3,6 @@ import React from 'react';
 import PersonCardsList from '../components/organisms/PersonCardsList';
 import useManageUsersFetching from '../hooks/useManageUsersFetching';
 import {USERS_LIMIT} from '../service/api.data';
-import LoadMoreButton from '../components/atoms/Buttons/LoadMoreButton';
 import useManageSingedInUser from '../hooks/useManageSignedInUser';
 
 const OtherUsersScreen = () => {
@@ -20,7 +19,6 @@ const OtherUsersScreen = () => {
   const pageToFetch = JSON.stringify(
     allUsers.length >= USERS_LIMIT ? allUsers.length / USERS_LIMIT + 1 : 1,
   );
-
   const nonFriends = allUsers.filter(
     person => !signedInUser.friendsIds.includes(person.id),
   );
@@ -31,10 +29,7 @@ const OtherUsersScreen = () => {
         peopleList={nonFriends}
         isRefreshing={refresh}
         onRefresh={handleRefresh}
-        areFriends={false}
-      />
-      <LoadMoreButton
-        onPress={handleLoadMore(pageToFetch)}
+        handleLoadMore={handleLoadMore(pageToFetch)}
         isLoading={isLoading}
         endReached={endReached}
       />

@@ -1,20 +1,20 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import FeedsScreen from './FeedsScreen';
-import FriendsScreen from './FriendsScreen';
+import FriendsScreen from '../../screens/FeedsScreen/FriendsScreen';
+import FeedScreen from '../../screens/FeedsScreen/FeedScreen';
 
 const Tabs = createBottomTabNavigator();
-const FeedNavigationScreen = () => {
+const TabsNavigation = () => {
   return (
     <Tabs.Navigator screenOptions={{headerShown: false}}>
-      <Tabs.Screen name="Feeds" component={FeedsScreen} />
+      <Tabs.Screen name="Feed" component={FeedScreen} />
       <Tabs.Screen
         name="Friends"
         component={FriendsScreen}
-        options={{title: 'Cat Pawls'}}
+        options={{title: 'Friends'}}
       />
     </Tabs.Navigator>
   );
 };
 
-export default FeedNavigationScreen;
+export default TabsNavigation;

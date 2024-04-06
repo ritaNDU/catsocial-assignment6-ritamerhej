@@ -31,7 +31,7 @@ const FriendsScreen = () => {
         peopleList={friends}
         isRefreshing={refresh}
         onRefresh={handleRefresh}
-        areFriends={true}
+        handleLoadMore={handleLoadMore(pageToFetch)}
       />
       <LoadMoreButton
         onPress={handleLoadMore(pageToFetch)}

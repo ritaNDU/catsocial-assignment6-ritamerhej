@@ -1,8 +1,8 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
-import FeedNavigationScreen from '../../screens/FeedsScreen/FeedNavigationScreen';
 import OtherUsersScreen from '../../screens/OtherUsersScreen';
 import Profile from '../../screens/Profile';
+import TabsNavigation from '../TabsNavigation/TabsNavigation';
 
 const Drawer = createDrawerNavigator();
 
@@ -11,8 +11,8 @@ const DrawerNavigation = () => {
     <Drawer.Navigator>
       <Drawer.Screen
         name="FeedsNavigation"
-        component={FeedNavigationScreen}
-        options={{title: 'Feeds'}}
+        component={TabsNavigation}
+        options={{title: 'Feed'}}
       />
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen
