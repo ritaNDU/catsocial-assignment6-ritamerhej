@@ -34,6 +34,7 @@ export async function getPostsFromApi(page: string) {
         imageUri: data[key].imageUri,
         likes: data[key].likes,
         comments: data[key].comments,
+        publicationDate: data[key].publicationDate,
       };
       posts.push(post);
     }
@@ -60,6 +61,7 @@ export async function getPostFromApi(postId: string) {
       imageUri: data.imageUri,
       likes: data.likes,
       comments: data.comments,
+      publicationDate: data.publicationDate,
     };
     return post;
   } else {

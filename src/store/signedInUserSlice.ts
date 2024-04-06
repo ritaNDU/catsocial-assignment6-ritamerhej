@@ -5,7 +5,7 @@ const initialValue: User = {
   id: '',
   name: '',
   email: '',
-  passwordHash: '',
+  password: '',
   token: '',
   friendsIds: [],
   avatar: '',
@@ -17,12 +17,12 @@ const signedInUserSlice = createSlice({
     value: initialValue,
   },
   reducers: {
-    store: (state, action: PayloadAction<User>) => {
+    signIn: (state, action: PayloadAction<User>) => {
       const user: User = {
         id: action.payload.id,
         name: action.payload.name,
         email: action.payload.email,
-        passwordHash: action.payload.passwordHash,
+        password: action.payload.password,
         token: action.payload.token,
         friendsIds: action.payload.friendsIds,
         avatar: action.payload.avatar,
@@ -43,7 +43,7 @@ const signedInUserSlice = createSlice({
   },
 });
 
-export const {store, signOut, addFriend, removeFriend} =
+export const {signIn, signOut, addFriend, removeFriend} =
   signedInUserSlice.actions;
 
 export default signedInUserSlice.reducer;

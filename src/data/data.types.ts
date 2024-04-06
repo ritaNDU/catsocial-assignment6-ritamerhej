@@ -2,10 +2,15 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  passwordHash: string;
+  password: string;
   token: string;
   friendsIds: string[];
   avatar: string;
+};
+
+export type StoredUser = {
+  userId: string;
+  token: string;
 };
 
 export type Comment = {
@@ -21,4 +26,5 @@ export type Post = {
   imageUri: string;
   likes: number;
   comments: Comment[];
+  publicationDate: Date;
 };

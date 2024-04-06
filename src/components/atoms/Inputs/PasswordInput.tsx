@@ -2,22 +2,21 @@ import {TextInput} from 'react-native';
 import React from 'react';
 import {Props} from './commonsProps';
 
-type PasswordInputProps = Omit<Props, 'name'>;
-const FormInput = ({
+const PasswordInputField = ({
   placeholder,
-  handleChange,
+  handleChangeText,
   handleBlur,
   value,
-}: PasswordInputProps) => {
+}: Props) => {
   return (
     <TextInput
       placeholder={placeholder}
-      onChange={handleChange('password')}
-      onBlur={handleBlur('password')}
+      onChangeText={handleChangeText}
+      onBlur={handleBlur}
       value={value}
       secureTextEntry
     />
   );
 };
 
-export default FormInput;
+export default PasswordInputField;

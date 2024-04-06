@@ -3,17 +3,16 @@ import React from 'react';
 import {Props} from './commonsProps';
 
 const FormInput = ({
-  name,
   placeholder,
-  handleChange,
+  handleChangeText,
   handleBlur,
   value,
 }: Props) => {
   return (
     <TextInput
       placeholder={placeholder}
-      onChange={handleChange(name)}
-      onBlur={handleBlur(name)}
+      onChangeText={handleChangeText}
+      onBlur={handleBlur}
       value={value}
     />
   );

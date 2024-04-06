@@ -1,7 +1,6 @@
 export interface Props {
-  name: string;
   placeholder: string;
-  handleChange: (name: string) => () => void;
-  handleBlur: (name: string) => () => void;
+  handleChangeText: (e: string | React.ChangeEvent<any>) => void;
+  handleBlur: (e: any) => void;
   value: string;
 }
