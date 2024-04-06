@@ -1,0 +1,6 @@
+enum STORAGE_PERMISSIONS {
+  READ_PERMISSION = 'android.permission.READ_EXTERNAL_STORAGE',
+  WRITE_PERMISSION = 'android.permission.WRITE_EXTERNAL_STORAGE',
+}
+
+export default STORAGE_PERMISSIONS;
