@@ -13,8 +13,8 @@ const allPostsSlice = createSlice({
     store: (state, action: PayloadAction<Post[]>) => {
       state.value = action.payload;
     },
-    add: (state, action: PayloadAction<Post>) => {
-      state.value.push(action.payload);
+    add: (state, action: PayloadAction<Post[]>) => {
+      state.value.push(...action.payload);
     },
     like: (state, action: PayloadAction<string>) => {
       const post = getPostById(state.value, action.payload);

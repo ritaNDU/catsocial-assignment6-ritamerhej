@@ -9,7 +9,7 @@ type Props = {
 
 const LoadMoreButton = ({onPress, isLoading, endReached}: Props) => {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} style={{marginBottom: 20}}>
       <Text>
         {isLoading ? (
           <ActivityIndicator size={30} />

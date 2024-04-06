@@ -7,7 +7,6 @@ import CameraModal from './CameraModal/CameraModal';
 import useManageModal from '../../../hooks/useManageModal';
 import useManagePost from '../../../hooks/useManagePosts';
 import NavigationButton from '../../atoms/Buttons/NavigationButton';
-import {Post} from '../../../data/data.types';
 import useManagePermissions from '../../../hooks/useManagePermissions';
 import STORAGE_PERMISSIONS from '../../../data/storagePermissions';
 import {

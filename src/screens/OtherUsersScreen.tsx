@@ -20,7 +20,9 @@ const OtherUsersScreen = () => {
     allUsers.length >= USERS_LIMIT ? allUsers.length / USERS_LIMIT + 1 : 1,
   );
   const nonFriends = allUsers.filter(
-    person => !signedInUser.friendsIds.includes(person.id),
+    person =>
+      !signedInUser.friendsIds.includes(person.id) &&
+      person.id !== signedInUser.id,
   );
 
   return (

@@ -23,6 +23,7 @@ export async function getPostsFromApi(page: string) {
         "Couldn't get data. Make sure you are connected to the internet and try again.",
       ),
     );
+  console.log(JSON.stringify(response, null, 2));
   const posts: Post[] = [];
   if (response) {
     const data = response.data;

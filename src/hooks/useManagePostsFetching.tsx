@@ -1,30 +1,30 @@
 import {useEffect, useState} from 'react';
-import {getPaginatedUsersFromApi} from '../service/usersApi';
-import useManageAllUsers from './useManageAllUsers';
-import {USERS_LIMIT} from '../service/api.data';
+import {POSTS_LIMIT} from '../service/api.data';
+import useManageAllPosts from './useManageAllPosts';
+import {getPostsFromApi} from '../service/postsApi';
 
-const useManageUsersFetching = () => {
-  const {allUsers, storeUsers, addUsers} = useManageAllUsers();
+const useManagePostsFetching = () => {
+  const {allPosts, addPosts, storePosts} = useManageAllPosts();
   const [endReached, setEndReached] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
   const handleLoadMore = (page: string) => async () => {
     setIsLoading(true);
-    const users = await getPaginatedUsersFromApi(page);
+    const posts = await getPostsFromApi(page);
     setIsLoading(false);
-    if (users.length === 0 || allUsers.length % USERS_LIMIT !== 0) {
+    if (posts.length === 0 || allPosts.length % POSTS_LIMIT !== 0) {
       setEndReached(true);
       return;
     }
-    addUsers(users);
+    addPosts(posts);
   };
 
   async function handleInitialFetch() {
     setIsLoading(true);
-    const users = await getPaginatedUsersFromApi('1');
+    const posts = await getPostsFromApi('1');
     setIsLoading(false);
-    storeUsers(users);
+    storePosts(posts);
   }
 
   async function handleRefresh() {
@@ -40,7 +40,7 @@ const useManageUsersFetching = () => {
   }, []);
 
   return {
-    allUsers,
+    allPosts,
     endReached,
     isLoading,
     refresh,
@@ -49,4 +49,4 @@ const useManageUsersFetching = () => {
   };
 };
 
-export default useManageUsersFetching;
+export default useManagePostsFetching;
