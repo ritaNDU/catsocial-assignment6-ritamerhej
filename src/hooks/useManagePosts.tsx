@@ -4,7 +4,7 @@ import useManageSingedInUser from './useManageSignedInUser';
 import {storePostInApi} from '../service/postsApi';
 import {Alert} from 'react-native';
 
-const useManagePost = () => {
+const useManagePosts = () => {
   const {signedInUser} = useManageSingedInUser();
 
   const [post, setPost] = useState<Post>({
@@ -42,4 +42,4 @@ const useManagePost = () => {
   return {post, addPost, addImageToPost, addTextToPost};
 };
 
-export default useManagePost;
+export default useManagePosts;
