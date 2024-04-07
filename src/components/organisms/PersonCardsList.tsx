@@ -5,6 +5,8 @@ import PersonCard from '../molecules/PersonCard';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
 import {modifyUserFromApi} from '../../service/usersApi';
 import LoadMoreButton from '../atoms/Buttons/LoadMoreButton';
+import {useNavigation} from '@react-navigation/native';
+import {DrawerNavigatorNavigationProps} from '../../navigation/DrawerNavigation/DrawerNavigation.types';
 
 type Props = {
   peopleList: User[];
@@ -24,6 +26,7 @@ const PersonCardsList = ({
   endReached,
 }: Props) => {
   const {signedInUser, loadSignedInUser} = useManageSingedInUser();
+  const navigation = useNavigation<DrawerNavigatorNavigationProps>();
 
   const manageFriend = (friendId: string) => async () => {
     const updatedFriendsId = signedInUser.friendsIds.includes(friendId)
@@ -35,7 +38,9 @@ const PersonCardsList = ({
     await modifyUserFromApi(modifiedUser);
     await loadSignedInUser(signedInUser.id);
   };
-
+  const handleGoToUserProfile = (userId: string) => () => {
+    navigation.navigate('OtherUserProfile', {userId: userId});
+  };
   const renderItem = ({item}: {item: User}) => {
     const areFriends = signedInUser.friendsIds.includes(item.id);
     return (
@@ -43,6 +48,7 @@ const PersonCardsList = ({
         isFriend={areFriends}
         name={item.name}
         manageFriend={manageFriend(item.id)}
+        onPress={handleGoToUserProfile(item.id)}
       />
     );
   };

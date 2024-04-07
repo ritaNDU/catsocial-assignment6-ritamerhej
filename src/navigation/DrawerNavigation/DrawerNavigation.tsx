@@ -3,6 +3,7 @@ import React from 'react';
 import OtherUsersScreen from '../../screens/OtherUsersScreen';
 import Profile from '../../screens/Profile';
 import TabsNavigation from '../TabsNavigation/TabsNavigation';
+import OtherUserProfile from '../../screens/OtherUserProfile';
 
 const Drawer = createDrawerNavigator();
 
@@ -19,6 +20,14 @@ const DrawerNavigation = () => {
         name="OtherUsersScreen"
         component={OtherUsersScreen}
         options={{title: 'Other Cat Parents'}}
+      />
+      <Drawer.Screen
+        name="OtherUserProfile"
+        component={OtherUserProfile}
+        options={{
+          drawerItemStyle: {display: 'none'},
+          headerShown: false,
+        }}
       />
     </Drawer.Navigator>
   );

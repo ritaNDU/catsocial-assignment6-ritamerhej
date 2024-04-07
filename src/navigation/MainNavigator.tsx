@@ -25,6 +25,7 @@ const MainNavigator = () => {
     getToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signedInUser, token]);
+
   if (token === '') {
     return <NativeStackNavigator />;
   } else {
