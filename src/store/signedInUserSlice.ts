@@ -8,7 +8,7 @@ const initialValue: User = {
   password: '',
   token: '',
   friendsIds: [],
-  avatar: '',
+  likedPosts: [],
 };
 
 const signedInUserSlice = createSlice({
@@ -25,25 +25,16 @@ const signedInUserSlice = createSlice({
         password: action.payload.password,
         token: action.payload.token,
         friendsIds: action.payload.friendsIds,
-        avatar: action.payload.avatar,
+        likedPosts: action.payload.likedPosts,
       };
       state.value = user;
     },
     removeUser: state => {
       state.value = initialValue;
     },
-    addFriend: (state, action: PayloadAction<string>) => {
-      state.value.friendsIds.push(action.payload);
-    },
-    removeFriend: (state, action: PayloadAction<string>) => {
-      state.value.friendsIds = state.value.friendsIds.filter(
-        friendId => friendId === action.payload,
-      );
-    },
   },
 });
 
-export const {loadUser, removeUser, addFriend, removeFriend} =
-  signedInUserSlice.actions;
+export const {loadUser, removeUser} = signedInUserSlice.actions;
 
 export default signedInUserSlice.reducer;

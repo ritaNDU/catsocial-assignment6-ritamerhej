@@ -14,9 +14,6 @@ export function storePostInApi(post: Post) {
 
 export async function getPostsFromApi(page: string) {
   const url = new URL(BASE_URL + 'posts');
-
-  url.searchParams.append('orderBy', 'publicationDate');
-  url.searchParams.append('order', 'desc');
   url.searchParams.append('page', page);
   url.searchParams.append('limit', JSON.stringify(POSTS_LIMIT));
   const response = await axios
@@ -35,7 +32,6 @@ export async function getPostsFromApi(page: string) {
         userId: data[key].userId,
         text: data[key].text,
         imageUri: data[key].imageUri,
-        likes: data[key].likes,
         comments: data[key].comments,
         publicationDate: data[key].publicationDate,
       };
@@ -62,7 +58,6 @@ export async function getPostFromApi(postId: string) {
       userId: data.userId,
       text: data.text,
       imageUri: data.imageUri,
-      likes: data.likes,
       comments: data.comments,
       publicationDate: data.publicationDate,
     };

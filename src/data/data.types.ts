@@ -5,7 +5,7 @@ export type User = {
   password: string;
   token: string;
   friendsIds: string[];
-  avatar: string;
+  likedPosts: string[];
 };
 
 export type StoredUser = {
@@ -24,7 +24,6 @@ export type Post = {
   userId: string;
   text: string;
   imageUri: string;
-  likes: number;
   comments: Comment[];
   publicationDate: string;
 };

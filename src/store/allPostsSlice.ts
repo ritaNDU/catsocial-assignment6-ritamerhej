@@ -16,20 +16,6 @@ const allPostsSlice = createSlice({
     add: (state, action: PayloadAction<Post[]>) => {
       state.value.push(...action.payload);
     },
-    like: (state, action: PayloadAction<string>) => {
-      const post = getPostById(state.value, action.payload);
-      if (post) {
-        post.likes += 1;
-        state.value[state.value.indexOf(post)] = post;
-      }
-    },
-    dislike: (state, action: PayloadAction<string>) => {
-      const post = getPostById(state.value, action.payload);
-      if (post) {
-        post.likes -= 1;
-        state.value[state.value.indexOf(post)] = post;
-      }
-    },
     addComment: (
       state,
       action: PayloadAction<{postId: string; comment: Comment}>,
@@ -43,5 +29,5 @@ const allPostsSlice = createSlice({
   },
 });
 
-export const {store, add, like, dislike, addComment} = allPostsSlice.actions;
+export const {store, add, addComment} = allPostsSlice.actions;
 export default allPostsSlice.reducer;

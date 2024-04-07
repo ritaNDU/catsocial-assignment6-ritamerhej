@@ -4,13 +4,14 @@ import useManageSingedInUser from './useManageSignedInUser';
 import {storePostInApi} from '../service/postsApi';
 import {Alert} from 'react-native';
 
-const useManagePosts = (
-  initialPost: Post = {
+const useManagePosts = () => {
+  const {signedInUser} = useManageSingedInUser();
+
+  const [post, setPost] = useState<Post>({
     id: '1',
-    userId: '',
+    userId: signedInUser.id,
     text: '',
     imageUri: '',
-    likes: 0,
     comments: [],
     publicationDate: `${JSON.stringify(new Date().getDate()).padStart(
       2,
@@ -19,11 +20,7 @@ const useManagePosts = (
       2,
       '0',
     )}/${JSON.stringify(new Date().getFullYear())}`,
-  },
-) => {
-  const {signedInUser} = useManageSingedInUser();
-
-  const [post, setPost] = useState<Post>(initialPost);
+  });
 
   const addPost = () => {
     if (post.text === '' && post.imageUri === '') {
@@ -31,8 +28,7 @@ const useManagePosts = (
         'Cannot create post. You need to add either a picture, or some text.',
       );
     } else {
-      const postToStore = {...post, userId: signedInUser.id};
-      storePostInApi(postToStore);
+      storePostInApi(post);
     }
   };
   const addImageToPost = (newImageUri: string) => {

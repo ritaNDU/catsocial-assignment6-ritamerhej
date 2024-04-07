@@ -1,5 +1,5 @@
-import {Post} from '../data/data.types';
-import {add, store} from '../store/allPostsSlice';
+import {Comment, Post} from '../data/data.types';
+import {add, addComment, dislike, like, store} from '../store/allPostsSlice';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 
 const useManageAllPosts = () => {
@@ -12,8 +12,24 @@ const useManageAllPosts = () => {
   const storePosts = (posts: Post[]) => {
     dispatch(store(posts));
   };
+  const addCommentToPost = (postId: string, comment: Comment) => {
+    dispatch(addComment({postId, comment}));
+  };
+  const likePost = (postId: string) => {
+    dispatch(like(postId));
+  };
+  const dislikePost = (postId: string) => {
+    dispatch(dislike(postId));
+  };
 
-  return {allPosts, addPosts, storePosts};
+  return {
+    allPosts,
+    addPosts,
+    storePosts,
+    addCommentToPost,
+    likePost,
+    dislikePost,
+  };
 };
 
 export default useManageAllPosts;
