@@ -1,4 +1,3 @@
-import {Button} from 'react-native';
 import React from 'react';
 import {initialSignupFormValues} from '../../data/formsData';
 import {Formik} from 'formik';
@@ -12,6 +11,7 @@ import {User} from '../../data/data.types';
 import {storeUserInApi} from '../../service/usersApi';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackNavigation/NativeStackNavigator.types';
+import NavigationButton from '../atoms/Buttons/NavigationButton';
 
 const handleSubmit =
   (submitFunction: (() => Promise<void>) & (() => Promise<any>)) => () => {
@@ -101,7 +101,7 @@ const SignupForm = () => {
           ) : (
             <></>
           )}
-          <Button onPress={handleSubmit(submitForm)} title="Submit" />
+          <NavigationButton onPress={handleSubmit(submitForm)} name="Submit" />
         </>
       )}
     </Formik>

@@ -19,7 +19,7 @@ const FeedScreen = () => {
     return signedInUser.friendsIds.includes(post.userId);
   });
   const pageToFetch = JSON.stringify(
-    friendsPosts.length >= POSTS_LIMIT ? allPosts.length / POSTS_LIMIT + 1 : 1,
+    allPosts.length >= POSTS_LIMIT ? allPosts.length / POSTS_LIMIT + 1 : 1,
   );
 
   return (

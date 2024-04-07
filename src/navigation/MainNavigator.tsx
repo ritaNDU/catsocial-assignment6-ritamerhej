@@ -7,19 +7,24 @@ import useManageSingedInUser from '../hooks/useManageSignedInUser';
 const MainNavigator = () => {
   const {getStoredUserInfo} = useManageSecureStorage();
   const [token, setToken] = useState('');
-  const {loadSignedInUser} = useManageSingedInUser();
+  const {signedInUser, loadSignedInUser} = useManageSingedInUser();
 
   useEffect(() => {
     async function getToken() {
       const userInfo = await getStoredUserInfo();
-      if (userInfo && userInfo.token !== '' && userInfo.userId !== '') {
+      console.log('fired');
+      if (signedInUser.token !== '') {
+        setToken(signedInUser.token);
+      } else if (userInfo && userInfo.token !== '' && userInfo.userId !== '') {
         loadSignedInUser(userInfo.userId);
         setToken(userInfo.token);
+      } else {
+        setToken('');
       }
     }
     getToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [signedInUser, token]);
   if (token === '') {
     return <NativeStackNavigator />;
   } else {

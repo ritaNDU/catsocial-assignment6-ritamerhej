@@ -1,4 +1,4 @@
-import {Alert, Button} from 'react-native';
+import {Alert} from 'react-native';
 import {Formik} from 'formik';
 import React from 'react';
 import {initialSigninFormValues} from '../../data/formsData';
@@ -12,6 +12,8 @@ import {InitialSigninFormType} from '../../data/formsData.types';
 import {getAllUsersFromApi} from '../../service/usersApi';
 import {getUserByEmail} from '../../utils/usersUtils';
 import useManageUser from '../../hooks/useManageUser';
+import NavigationButton from '../atoms/Buttons/NavigationButton';
+import useManageSignedInUser from '../../hooks/useManageSignedInUser';
 
 const handleSubmit =
   (submitFunction: (() => Promise<void>) & (() => Promise<any>)) => () => {
@@ -20,13 +22,15 @@ const handleSubmit =
 
 const SigninForm = () => {
   const {signUserIn} = useManageUser();
+  const {loadSignedInUser} = useManageSignedInUser();
 
   const handleSignin = async (values: InitialSigninFormType) => {
     const allUsers = await getAllUsersFromApi();
     let user = getUserByEmail(allUsers, values.email);
     if (user && user.password === values.password) {
       user.token = base64.encode(`${user.id} ${user.email}`);
-      signUserIn(user);
+      await signUserIn(user);
+      await loadSignedInUser(user.id);
     } else {
       Alert.alert('Incorrect credentials. Are you registered?');
     }
@@ -61,7 +65,7 @@ const SigninForm = () => {
           ) : (
             <></>
           )}
-          <Button onPress={handleSubmit(submitForm)} title="Submit" />
+          <NavigationButton onPress={handleSubmit(submitForm)} name="Submit" />
         </>
       )}
     </Formik>

@@ -14,6 +14,9 @@ export function storePostInApi(post: Post) {
 
 export async function getPostsFromApi(page: string) {
   const url = new URL(BASE_URL + 'posts');
+
+  url.searchParams.append('orderBy', 'publicationDate');
+  url.searchParams.append('order', 'desc');
   url.searchParams.append('page', page);
   url.searchParams.append('limit', JSON.stringify(POSTS_LIMIT));
   const response = await axios
@@ -23,11 +26,9 @@ export async function getPostsFromApi(page: string) {
         "Couldn't get data. Make sure you are connected to the internet and try again.",
       ),
     );
-  console.log(JSON.stringify(response, null, 2));
   const posts: Post[] = [];
   if (response) {
     const data = response.data;
-
     for (const key in data) {
       const post: Post = {
         id: data[key].id,
