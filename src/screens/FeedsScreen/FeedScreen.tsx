@@ -3,7 +3,7 @@ import React from 'react';
 import PostCardsList from '../../components/organisms/PostCardsList';
 import {POSTS_LIMIT} from '../../service/api.data';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
-import useManagePostssFetching from '../../hooks/useManagePostssFetching';
+import useManagePostsFetching from '../../hooks/useManagePostsFetching';
 
 const FeedScreen = () => {
   const {
@@ -13,7 +13,7 @@ const FeedScreen = () => {
     refresh,
     handleLoadMore,
     handleRefresh,
-  } = useManagePostssFetching();
+  } = useManagePostsFetching();
   const {signedInUser} = useManageSingedInUser();
   const friendsPosts = allPosts.filter(post => {
     return signedInUser.friendsIds.includes(post.userId);

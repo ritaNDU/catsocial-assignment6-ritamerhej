@@ -3,7 +3,7 @@ import {POSTS_LIMIT} from '../service/api.data';
 import useManageAllPosts from './useManageAllPosts';
 import {getPostsFromApi} from '../service/postsApi';
 
-const useManagePostssFetching = () => {
+const useManagePostsFetching = () => {
   const {allPosts, addPosts, storePosts} = useManageAllPosts();
   const [endReached, setEndReached] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,4 +49,4 @@ const useManagePostssFetching = () => {
   };
 };
 
-export default useManagePostssFetching;
+export default useManagePostsFetching;

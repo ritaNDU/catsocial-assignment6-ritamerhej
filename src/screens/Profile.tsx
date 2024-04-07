@@ -4,7 +4,7 @@ import AddNewPostModal from '../components/templates/Modals/AddNewPostModal';
 import useManageModal from '../hooks/useManageModal';
 import NavigationButton from '../components/atoms/Buttons/NavigationButton';
 import PostCardsList from '../components/organisms/PostCardsList';
-import useManagePostssFetching from '../hooks/useManagePostssFetching';
+import useManagePostsFetching from '../hooks/useManagePostsFetching';
 import useManageSingedInUser from '../hooks/useManageSignedInUser';
 import {POSTS_LIMIT} from '../service/api.data';
 
@@ -17,7 +17,7 @@ const Profile = () => {
     refresh,
     handleLoadMore,
     handleRefresh,
-  } = useManagePostssFetching();
+  } = useManagePostsFetching();
   const {signedInUser} = useManageSingedInUser();
   const userPosts = allPosts.filter(post => post.userId === signedInUser.id);
 

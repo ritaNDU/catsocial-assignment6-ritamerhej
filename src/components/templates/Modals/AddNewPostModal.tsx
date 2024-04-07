@@ -5,7 +5,7 @@ import AddPostButtonGroup from '../../molecules/AddPostButtonGroup';
 import FormInput from '../../atoms/Inputs/FormInput';
 import CameraModal from './CameraModal/CameraModal';
 import useManageModal from '../../../hooks/useManageModal';
-import useManagePosts from '../../../hooks/useManagePostss';
+import useManagePosts from '../../../hooks/useManagePosts';
 import NavigationButton from '../../atoms/Buttons/NavigationButton';
 import useManagePermissions from '../../../hooks/useManagePermissions';
 import STORAGE_PERMISSIONS from '../../../data/storagePermissions';
