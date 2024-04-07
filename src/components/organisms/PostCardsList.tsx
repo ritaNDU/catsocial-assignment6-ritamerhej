@@ -3,6 +3,7 @@ import React from 'react';
 import {Post} from '../../data/data.types';
 import LoadMoreButton from '../atoms/Buttons/LoadMoreButton';
 import PostCard from '../molecules/PostCard';
+import useManageModal from '../../hooks/useManageModal';
 
 type Props = {
   postsList: Post[];
@@ -21,19 +22,22 @@ const PostCardsList = ({
   isLoading,
   endReached,
 }: Props) => {
+  const {visible, openModal, closeModal} = useManageModal();
+
   const renderItem = ({item}: {item: Post}) => {
     const likes = JSON.stringify(item.likes);
     return (
-      <PostCard
-        userId={item.userId}
-        postText={item.text}
-        imageUri={item.imageUri}
-        publicationDate={item.publicationDate}
-        likes={likes}
-        comments={item.comments}
-        handleLike={() => console.log('liked')}
-        handleOpenCommentsModal={() => console.log('Commented')}
-      />
+      <>
+        <PostCard
+          userId={item.userId}
+          postText={item.text}
+          imageUri={item.imageUri}
+          publicationDate={item.publicationDate}
+          likes={likes}
+          comments={item.comments}
+          handleLike={() => console.log('liked')}
+        />
+      </>
     );
   };
   if (postsList.length > 0) {

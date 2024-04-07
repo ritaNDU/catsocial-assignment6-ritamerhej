@@ -10,3 +10,7 @@ export type InitialSigninFormType = {
   email: string;
   password: string;
 };
+
+export type initialCommentsFormType = {
+  comment: string;
+};

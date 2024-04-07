@@ -12,7 +12,6 @@ type Props = {
   likes: string;
   comments: Comment[];
   handleLike: () => void;
-  handleOpenCommentsModal: () => void;
 };
 const PostCard = ({
   userId,
@@ -21,7 +20,6 @@ const PostCard = ({
   likes,
   comments,
   handleLike,
-  handleOpenCommentsModal,
   publicationDate,
 }: Props) => {
   const [name, setName] = useState('');
@@ -45,11 +43,6 @@ const PostCard = ({
       )}
       <View style={{flexDirection: 'row', gap: 10}}>
         <PostsButton name="Like" stats={likes} onPress={handleLike} />
-        <PostsButton
-          name="Comments"
-          stats={comments.length.toString()}
-          onPress={handleOpenCommentsModal}
-        />
       </View>
     </View>
   );

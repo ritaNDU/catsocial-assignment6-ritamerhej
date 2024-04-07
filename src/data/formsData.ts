@@ -12,3 +12,7 @@ export const initialSigninFormValues: InitialSigninFormType = {
   email: '',
   password: '',
 };
+
+export const initialCommentsFormValue = {
+  comment: '',
+};
