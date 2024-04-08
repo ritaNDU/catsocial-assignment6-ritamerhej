@@ -5,6 +5,7 @@ import {getUserFromApi} from '../../service/usersApi';
 import {Post} from '../../data/data.types';
 import CommentsModal from '../templates/Modals/CommentsModal';
 import useManageModal from '../../hooks/useManageModal';
+import Avatar from '../atoms/Avatar/Avatar';
 
 type Props = {
   post: Post;
@@ -24,8 +25,13 @@ const PostCard = ({post}: Props) => {
 
   return (
     <View style={{marginBottom: 10}}>
-      <Text>{name}</Text>
-      <Text>{post.publicationDate}</Text>
+      <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
+        <Avatar />
+        <View>
+          <Text>{name}</Text>
+          <Text>{post.publicationDate}</Text>
+        </View>
+      </View>
       {post.text !== '' && <Text>{post.text}</Text>}
       {post.imageUri !== '' && (
         <Image
