@@ -59,6 +59,7 @@ export async function getAllUsersFromApi() {
         id: data[key].id,
         name: data[key].name,
         email: data[key].email,
+        password: data[key].password,
         token: data[key].token,
         friendsIds: data[key].friendsIds,
       };
