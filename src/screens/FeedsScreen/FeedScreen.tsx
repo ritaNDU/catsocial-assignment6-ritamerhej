@@ -15,7 +15,6 @@ const FeedScreen = () => {
     handleRefresh,
   } = useManagePostsFetching();
   const {signedInUser} = useManageSingedInUser();
-  console.log(signedInUser);
   const friendsPosts = allPosts.filter(post => {
     return signedInUser.friendsIds.includes(post.userId);
   });

@@ -12,7 +12,6 @@ const MainNavigator = () => {
   useEffect(() => {
     async function getToken() {
       const userInfo = await getStoredUserInfo();
-      console.log('fired');
       if (signedInUser.token !== '') {
         setToken(signedInUser.token);
       } else if (userInfo && userInfo.token !== '' && userInfo.userId !== '') {
