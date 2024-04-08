@@ -32,7 +32,6 @@ const SignupForm = () => {
       password: values.password,
       token: '',
       friendsIds: [],
-      likedPosts: [],
     };
     storeUserInApi(user);
     resetForm();

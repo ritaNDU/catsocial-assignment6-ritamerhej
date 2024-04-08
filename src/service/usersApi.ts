@@ -32,10 +32,8 @@ export async function getPaginatedUsersFromApi(page: string) {
         id: data[key].id,
         name: data[key].name,
         email: data[key].email,
-        password: data[key].password,
         token: data[key].token,
         friendsIds: data[key].friendsIds,
-        likedPosts: data[key].likedPosts,
       };
       users.push(user);
     }
@@ -61,10 +59,8 @@ export async function getAllUsersFromApi() {
         id: data[key].id,
         name: data[key].name,
         email: data[key].email,
-        password: data[key].password,
         token: data[key].token,
         friendsIds: data[key].friendsIds,
-        likedPosts: data[key].likedPosts,
       };
       users.push(user);
     }
@@ -86,10 +82,8 @@ export async function getUserFromApi(userId: string) {
     id: '',
     name: '',
     email: '',
-    password: '',
     token: '',
     friendsIds: [],
-    likedPosts: [],
   };
 
   if (response) {
@@ -98,10 +92,8 @@ export async function getUserFromApi(userId: string) {
       id: data.id,
       name: data.name,
       email: data.email,
-      password: data.password,
       token: data.token,
       friendsIds: data.friendsIds,
-      likedPosts: data.likedPosts,
     };
   } else {
     Alert.alert("Couldn't get user.");

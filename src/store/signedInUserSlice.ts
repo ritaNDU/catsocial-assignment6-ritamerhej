@@ -5,10 +5,8 @@ const initialValue: User = {
   id: '',
   name: '',
   email: '',
-  password: '',
   token: '',
   friendsIds: [],
-  likedPosts: [],
 };
 
 const signedInUserSlice = createSlice({
@@ -22,10 +20,8 @@ const signedInUserSlice = createSlice({
         id: action.payload.id,
         name: action.payload.name,
         email: action.payload.email,
-        password: action.payload.password,
         token: action.payload.token,
         friendsIds: action.payload.friendsIds,
-        likedPosts: action.payload.likedPosts,
       };
       state.value = user;
     },
