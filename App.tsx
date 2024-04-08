@@ -7,6 +7,7 @@ import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
 import MainNavigator from './src/navigation/MainNavigator';
 import notifee, {
   EventType,
+  RepeatFrequency,
   TimestampTrigger,
   TriggerType,
 } from '@notifee/react-native';
@@ -22,50 +23,74 @@ const linking: LinkingOptions<ReactNavigation.RootParamList> = {
 };
 
 function App(): React.JSX.Element {
-  async function onDisplayNotification() {
+  async function initializeApp() {
+    try {
+      await notifee.requestPermission();
+    } catch (error) {
+      Alert.alert(`${error}`);
+    }
+  }
+
+  async function comeBackNotification() {
     const channelId = await notifee.createChannel({
       id: 'default',
       name: 'Default Channel',
     });
 
-    await notifee.requestPermission();
-
     const date = new Date(Date.now());
-    date.setHours(18);
-    date.setMinutes(0);
+    date.setHours(10);
+    date.setMinutes(35);
 
     const trigger: TimestampTrigger = {
       type: TriggerType.TIMESTAMP,
       timestamp: date.getTime(),
+      repeatFrequency: RepeatFrequency.DAILY,
     };
-
-    await notifee.createTriggerNotification(
-      {
-        title: 'Relax and check out cute cat pics.',
-        body: "Come check out your friend's latest cute cat pictures 🐱 and relax after this loooong day.",
-        android: {
-          channelId: channelId,
+    try {
+      await notifee.createTriggerNotification(
+        {
+          title: 'Relax and check out cute cat pics.',
+          body: "Relax after this loooong day and check out your friends' latest cute cat pictures 🐱 .",
+          android: {
+            channelId: channelId,
+            pressAction: {
+              id: 'default',
+            },
+          },
         },
-      },
-      trigger,
-    );
+        trigger,
+      );
+    } catch (error) {
+      console.log(`${error}`);
+    }
   }
 
+  function handleNotificationEvent(type: EventType, detail: any) {
+    switch (type) {
+      case EventType.DISMISSED:
+        console.log('User dismissed notification', detail.notification);
+        break;
+      case EventType.PRESS:
+        console.log('User pressed notification', detail.notification);
+        Alert.alert("Welcome back, pal'!");
+
+        break;
+    }
+  }
   useEffect(() => {
-    onDisplayNotification();
-    return notifee.onForegroundEvent(({type}) => {
-      switch (type) {
-        case EventType.PRESS:
-          Alert.alert('Welcome back! Cute cat pictures are waiting for you!');
-          break;
-      }
+    initializeApp();
+    comeBackNotification();
+  }, []);
+
+  useEffect(() => {
+    return notifee.onForegroundEvent(({type, detail}) => {
+      handleNotificationEvent(type, detail);
     });
   }, []);
 
   useEffect(() => {
-    return notifee.onBackgroundEvent(async ({detail}) => {
-      const {notification} = detail;
-      await notifee.cancelNotification(notification?.id as string);
+    return notifee.onBackgroundEvent(async ({type, detail}) => {
+      handleNotificationEvent(type, detail);
     });
   });
 
