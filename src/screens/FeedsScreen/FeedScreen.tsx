@@ -4,6 +4,7 @@ import PostCardsList from '../../components/organisms/PostCardsList';
 import {POSTS_LIMIT} from '../../service/api.data';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
 import useManagePostsFetching from '../../hooks/useManagePostsFetching';
+import styles from '../commonStyles';
 
 const FeedScreen = () => {
   const {
@@ -23,7 +24,7 @@ const FeedScreen = () => {
   );
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.container}>
       <PostCardsList
         postsList={friendsPosts}
         handleLoadMore={handleLoadMore(pageToFetch)}

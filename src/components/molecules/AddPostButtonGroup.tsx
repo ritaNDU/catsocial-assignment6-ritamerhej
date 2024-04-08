@@ -1,6 +1,7 @@
 import {View} from 'react-native';
 import React from 'react';
 import NavigationButton from '../atoms/Buttons/NavigationButton';
+import styles from './molecules.styles';
 
 type Props = {
   handleTakeAPhoto: () => void;
@@ -8,7 +9,7 @@ type Props = {
 };
 const AddPostButtonGroup = ({handleTakeAPhoto, handlePickAnImage}: Props) => {
   return (
-    <View>
+    <View style={styles.buttonGroup}>
       <NavigationButton name="Take a Photo" onPress={handleTakeAPhoto} />
       <NavigationButton name="Pick an Image" onPress={handlePickAnImage} />
     </View>

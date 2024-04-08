@@ -1,6 +1,6 @@
 import {Alert} from 'react-native';
 import {Formik} from 'formik';
-import React from 'react';
+import React, {useState} from 'react';
 import {initialSigninFormValues} from '../../data/formsData';
 import FormInput from '../atoms/Inputs/FormInput';
 import PasswordInputField from '../atoms/Inputs/PasswordInput';
@@ -22,11 +22,12 @@ const handleSubmit =
 const SigninForm = () => {
   const {signUserIn} = useManageUser();
   const {loadSignedInUser} = useManageSignedInUser();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSignin = async (values: InitialSigninFormType) => {
     const allUsers = await getAllUsersFromApi();
     let user = getUserByEmail(allUsers, values.email);
-    console.log(user);
+    setIsLoading(true);
     if (user && user.password === values.password) {
       user.token = base64.encode(`${user.id} ${user.email}`);
       await signUserIn(user);
@@ -34,6 +35,7 @@ const SigninForm = () => {
     } else {
       Alert.alert('Incorrect credentials. Are you registered?');
     }
+    setIsLoading(false);
   };
 
   return (
@@ -60,7 +62,11 @@ const SigninForm = () => {
             error={errors.password}
             touched={touched.password}
           />
-          <NavigationButton onPress={handleSubmit(submitForm)} name="Submit" />
+          <NavigationButton
+            onPress={handleSubmit(submitForm)}
+            name="Submit"
+            isLoading={isLoading}
+          />
         </>
       )}
     </Formik>

@@ -13,7 +13,11 @@ const ModalTemplate = ({isVisible, handleClose, children}: Props) => {
   return (
     <Modal visible={isVisible} animationType="slide">
       <View style={styles.modalTemplate}>
-        <NavigationButton name="Close" onPress={handleClose} />
+        <NavigationButton
+          name="Close"
+          onPress={handleClose}
+          styleProp={styles.close}
+        />
         {children}
       </View>
     </Modal>

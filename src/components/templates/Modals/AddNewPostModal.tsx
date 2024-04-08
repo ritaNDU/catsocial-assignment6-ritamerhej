@@ -1,4 +1,4 @@
-import {View, Text, Alert, Linking} from 'react-native';
+import {Text, Alert, Linking, Image, ScrollView} from 'react-native';
 import React, {ChangeEvent} from 'react';
 import ModalTemplate from './ModalTemplate';
 import AddPostButtonGroup from '../../molecules/AddPostButtonGroup';
@@ -13,6 +13,7 @@ import {
   ImageLibraryOptions,
   launchImageLibrary,
 } from 'react-native-image-picker';
+import styles from './styles/AddNewPostModal.styles';
 
 type Props = {
   isVisible: boolean;
@@ -63,9 +64,8 @@ const AddNewPostModal = ({handleClose, isVisible}: Props) => {
 
   return (
     <ModalTemplate handleClose={handleClose} isVisible={isVisible}>
-      <View>
-        <Text>Add a new Meow</Text>
-        <NavigationButton name="Create Post" onPress={addPost} />
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.title}>Add a new Meow</Text>
         <FormInput
           placeholder="Say something..."
           handleChangeText={handleChangeText}
@@ -75,12 +75,20 @@ const AddNewPostModal = ({handleClose, isVisible}: Props) => {
           handleTakeAPhoto={openModal}
           handlePickAnImage={handlePickImage}
         />
+        {post.imageUri !== '' && (
+          <Image source={{uri: post.imageUri}} style={styles.image} />
+        )}
+        <NavigationButton
+          name="Create Post"
+          onPress={addPost}
+          styleProp={styles.create}
+        />
         <CameraModal
           handleClose={closeModal}
           isVisible={visible}
           handleAddImage={addImageToPost}
         />
-      </View>
+      </ScrollView>
     </ModalTemplate>
   );
 };

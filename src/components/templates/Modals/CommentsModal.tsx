@@ -4,6 +4,7 @@ import ModalTemplate from './ModalTemplate';
 import AddCommentForm from '../../organisms/AddCommentForm';
 import {Post} from '../../../data/data.types';
 import CommentsList from '../../organisms/CommentsList';
+import styles from './styles/CommentsModal.styles';
 
 type Props = {
   isVisible: boolean;
@@ -14,8 +15,8 @@ type Props = {
 const CommentsModal = ({handleClose, isVisible, post}: Props) => {
   return (
     <ModalTemplate handleClose={handleClose} isVisible={isVisible}>
-      <View>
-        <Text>Comments</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Comments</Text>
         <CommentsList comments={post.comments} />
         <AddCommentForm post={post} />
       </View>

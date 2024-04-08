@@ -4,6 +4,7 @@ import useManageUsersFetching from '../../hooks/useManageUsersFetching';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
 import {USERS_LIMIT} from '../../service/api.data';
 import PersonCardsList from '../../components/organisms/PersonCardsList';
+import styles from '../commonStyles';
 
 const FriendsScreen = () => {
   const {
@@ -25,7 +26,7 @@ const FriendsScreen = () => {
   );
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <PersonCardsList
         peopleList={friends}
         isRefreshing={refresh}

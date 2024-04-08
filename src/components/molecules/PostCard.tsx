@@ -6,6 +6,7 @@ import {Post} from '../../data/data.types';
 import CommentsModal from '../templates/Modals/CommentsModal';
 import useManageModal from '../../hooks/useManageModal';
 import Avatar from '../atoms/Avatar/Avatar';
+import styles from './molecules.styles';
 
 type Props = {
   post: Post;
@@ -24,26 +25,26 @@ const PostCard = ({post}: Props) => {
   }, []);
 
   return (
-    <View style={{marginBottom: 10}}>
-      <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
+    <View style={styles.container}>
+      <View style={styles.postHeader}>
         <Avatar />
         <View>
-          <Text>{name}</Text>
-          <Text>{post.publicationDate}</Text>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.date}>{post.publicationDate}</Text>
         </View>
       </View>
-      {post.text !== '' && <Text>{post.text}</Text>}
-      {post.imageUri !== '' && (
-        <Image
-          source={{uri: post.imageUri}}
-          style={{width: '100%', height: 500}}
+      <View style={styles.content}>
+        {post.text !== '' && <Text style={styles.text}>{post.text}</Text>}
+        {post.imageUri !== '' && (
+          <Image source={{uri: post.imageUri}} style={styles.image} />
+        )}
+        <PostsButton
+          name="Comments"
+          stats={JSON.stringify(post.comments.length)}
+          onPress={openModal}
         />
-      )}
-      <PostsButton
-        name="Comments"
-        stats={JSON.stringify(post.comments.length)}
-        onPress={openModal}
-      />
+      </View>
+
       <CommentsModal isVisible={visible} handleClose={closeModal} post={post} />
     </View>
   );

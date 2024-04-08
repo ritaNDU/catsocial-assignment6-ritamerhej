@@ -1,5 +1,5 @@
 import {View, Text, Alert} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import AddNewPostModal from '../components/templates/Modals/AddNewPostModal';
 import useManageModal from '../hooks/useManageModal';
 import NavigationButton from '../components/atoms/Buttons/NavigationButton';
@@ -8,6 +8,8 @@ import useManagePostsFetching from '../hooks/useManagePostsFetching';
 import useManageSingedInUser from '../hooks/useManageSignedInUser';
 import {POSTS_LIMIT} from '../service/api.data';
 import useManageUser from '../hooks/useManageUser';
+import styles from './commonStyles';
+import {useNavigation} from '@react-navigation/native';
 
 const Profile = () => {
   const {closeModal, openModal, visible} = useManageModal();
@@ -22,6 +24,7 @@ const Profile = () => {
   const {signUserOut} = useManageUser();
   const {signedInUser, removeSignedInUser} = useManageSingedInUser();
   const userPosts = allPosts.filter(post => post.userId === signedInUser.id);
+  const nav = useNavigation();
 
   const pageToFetch = JSON.stringify(
     allPosts.length >= POSTS_LIMIT ? allPosts.length / POSTS_LIMIT + 1 : 1,
@@ -33,15 +36,25 @@ const Profile = () => {
 
     Alert.alert('Signed out');
   };
+
+  const setButtonToHeader = () => (
+    <NavigationButton
+      name="Sign Out"
+      onPress={handleSignout}
+      styleProp={styles.signout}
+    />
+  );
+
+  useEffect(() => {
+    nav.setOptions({
+      headerRight: setButtonToHeader,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
-    <View style={{flex: 1}}>
-      <View style={{flexDirection: 'row'}}>
-        <Text>{signedInUser.name}</Text>
-        <NavigationButton name="Signout" onPress={handleSignout} />
-      </View>
+    <View style={styles.container}>
       <NavigationButton name="Add new Meow" onPress={openModal} />
-      <AddNewPostModal isVisible={visible} handleClose={closeModal} />
-      <Text>Your Meows</Text>
+      <Text style={styles.title}>Your Meows</Text>
       <PostCardsList
         postsList={userPosts}
         handleLoadMore={handleLoadMore(pageToFetch)}
@@ -50,6 +63,7 @@ const Profile = () => {
         isRefreshing={refresh}
         onRefresh={handleRefresh}
       />
+      <AddNewPostModal isVisible={visible} handleClose={closeModal} />
     </View>
   );
 };

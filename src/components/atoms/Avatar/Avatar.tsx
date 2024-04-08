@@ -1,19 +1,12 @@
 import {Image, View} from 'react-native';
 import React from 'react';
+import styles from './Avatar.styles';
 
 const Avatar = () => {
   return (
-    <View
-      style={{
-        backgroundColor: 'white',
-        width: 40,
-        height: 40,
-        borderRadius: 40,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <View style={styles.container}>
       <Image
-        style={{width: 25, height: 25}}
+        style={styles.image}
         source={require('../../../assets/illustrations/catAvatar.png')}
       />
     </View>

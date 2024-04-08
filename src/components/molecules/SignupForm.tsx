@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {initialSignupFormValues} from '../../data/formsData';
 import {Formik} from 'formik';
 import FormInput from '../atoms/Inputs/FormInput';
@@ -19,6 +19,7 @@ const handleSubmit =
 
 const SignupForm = () => {
   const navigation = useNavigation<NativeStackNavigatorNavigationProps>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSignup = (
     values: InitialSignupFormType,
@@ -32,8 +33,10 @@ const SignupForm = () => {
       token: '',
       friendsIds: [],
     };
+    setIsLoading(true);
     storeUserInApi(user);
     resetForm();
+    setIsLoading(false);
     navigation.navigate('SignIn');
   };
 
@@ -88,7 +91,11 @@ const SignupForm = () => {
             touched={touched.repeatPassword}
           />
 
-          <NavigationButton onPress={handleSubmit(submitForm)} name="Submit" />
+          <NavigationButton
+            onPress={handleSubmit(submitForm)}
+            name="Submit"
+            isLoading={isLoading}
+          />
         </>
       )}
     </Formik>

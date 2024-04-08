@@ -39,7 +39,7 @@ function App(): React.JSX.Element {
 
     const date = new Date(Date.now());
     date.setHours(18);
-    date.setMinutes(0);
+    date.setMinutes(13);
 
     const trigger: TimestampTrigger = {
       type: TriggerType.TIMESTAMP,

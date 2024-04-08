@@ -9,11 +9,19 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      screenOptions={{
+        drawerContentStyle: {backgroundColor: '#fff'},
+        drawerActiveBackgroundColor: '#efefef',
+        drawerActiveTintColor: '#000',
+      }}>
       <Drawer.Screen
         name="FeedsNavigation"
         component={TabsNavigation}
-        options={{title: 'Feed'}}
+        options={{
+          title: 'Feed',
+          headerTitle: '',
+        }}
       />
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen

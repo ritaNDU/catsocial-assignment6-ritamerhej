@@ -9,6 +9,7 @@ import {
   DrawerNavigatorPropsList,
 } from '../navigation/DrawerNavigation/DrawerNavigation.types';
 import NavigationButton from '../components/atoms/Buttons/NavigationButton';
+import styles from './commonStyles';
 
 const OtherUserProfile = () => {
   const {
@@ -42,11 +43,9 @@ const OtherUserProfile = () => {
     navigation.goBack();
   };
   return (
-    <View style={{flex: 1}}>
-      <View style={{flexDirection: 'row'}}>
-        <NavigationButton name={'Go Back'} onPress={handleGoBack} />
-        <Text>Cute Cat Profile</Text>
-      </View>
+    <View style={styles.container}>
+      <NavigationButton name="Go Back" onPress={handleGoBack} />
+      <Text style={styles.title}>Cutie Kat Profile</Text>
       <PostCardsList
         postsList={userPosts}
         handleLoadMore={handleLoadMore(pageToFetch)}

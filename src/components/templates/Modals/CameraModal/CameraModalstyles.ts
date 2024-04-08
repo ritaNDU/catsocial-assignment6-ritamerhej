@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   askForPermission: {fontSize: 20, color: '#000'},
-  buttonContainer: {position: 'absolute', bottom: 50, alignSelf: 'center'},
+  buttonContainer: {position: 'absolute', bottom: 100, alignSelf: 'center'},
 });
 
 export default styles;

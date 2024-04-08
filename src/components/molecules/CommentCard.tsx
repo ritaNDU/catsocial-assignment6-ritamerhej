@@ -1,6 +1,7 @@
 import {View, Text} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {getUserFromApi} from '../../service/usersApi';
+import styles from './molecules.styles';
 type Props = {
   userId: string;
   commentText: string;
@@ -18,9 +19,9 @@ const CommentCard = ({userId, commentText}: Props) => {
     getName();
   }, [userId]);
   return (
-    <View style={{flexDirection: 'row'}}>
-      <Text>{name}</Text>
-      <Text>{commentText}</Text>
+    <View style={styles.commentsContainer}>
+      <Text style={styles.name}>{name}</Text>
+      <Text style={styles.commentBody}>{commentText}</Text>
     </View>
   );
 };

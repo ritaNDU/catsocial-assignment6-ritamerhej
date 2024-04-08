@@ -8,7 +8,6 @@ type Props = {
   onPress: () => void;
 };
 const PostsButton = ({name, onPress, stats}: Props) => {
-  //TODO: Animate
   return (
     <Pressable onPress={onPress} style={styles.post}>
       <Text style={styles.postText}>{name}</Text>

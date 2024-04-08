@@ -1,4 +1,5 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import theme from '../../../style/theme';
 
 const commonButtonStyles: ViewStyle = {
   padding: 5,
@@ -16,6 +17,8 @@ const commonTextStyle: TextStyle = {
 const styles = StyleSheet.create({
   addFriendsButton: {
     ...commonButtonStyles,
+    width: '100%',
+    backgroundColor: 'lightgray',
   },
 
   addFriendsButtonText: {
@@ -25,7 +28,7 @@ const styles = StyleSheet.create({
   loadMore: {
     ...commonButtonStyles,
     marginBottom: 20,
-    width: '90%',
+    width: '100%',
     alignSelf: 'center',
   },
   loadMoreText: {
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
   },
   post: {flexDirection: 'row', gap: 4},
   postText: {
-    fontSize: 11,
+    fontSize: theme.fontSize.small,
   },
   captureButton: {
     borderWidth: 5,
