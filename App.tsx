@@ -38,8 +38,8 @@ function App(): React.JSX.Element {
     });
 
     const date = new Date(Date.now());
-    date.setHours(10);
-    date.setMinutes(35);
+    date.setHours(18);
+    date.setMinutes(0);
 
     const trigger: TimestampTrigger = {
       type: TriggerType.TIMESTAMP,
@@ -51,6 +51,7 @@ function App(): React.JSX.Element {
         {
           title: 'Relax and check out cute cat pics.',
           body: "Relax after this loooong day and check out your friends' latest cute cat pictures 🐱 .",
+
           android: {
             channelId: channelId,
             pressAction: {
@@ -73,7 +74,6 @@ function App(): React.JSX.Element {
       case EventType.PRESS:
         console.log('User pressed notification', detail.notification);
         Alert.alert("Welcome back, pal'!");
-
         break;
     }
   }

@@ -3,7 +3,7 @@ import {Formik} from 'formik';
 import {initialCommentsFormValue} from '../../data/formsData';
 import NavigationButton from '../atoms/Buttons/NavigationButton';
 import FormInput from '../atoms/Inputs/FormInput';
-import ErrorText from '../atoms/ErrorText';
+import ErrorText from '../atoms/Errors/ErrorText';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
 import {Comment, Post} from '../../data/data.types';
 import {modifyPostFromApi} from '../../service/postsApi';

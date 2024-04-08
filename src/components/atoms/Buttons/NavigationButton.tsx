@@ -1,5 +1,6 @@
 import {Text, Pressable, ActivityIndicator} from 'react-native';
 import React from 'react';
+import styles from './Buttons.styles';
 
 type Props = {
   name: string;
@@ -8,8 +9,8 @@ type Props = {
 };
 const NavigationButton = ({name, onPress, isLoading}: Props) => {
   return (
-    <Pressable onPress={onPress} style={{flexDirection: 'row', gap: 4}}>
-      <Text>{name}</Text>
+    <Pressable onPress={onPress} style={styles.navigation}>
+      <Text style={styles.navigationText}>{name}</Text>
       {isLoading && <ActivityIndicator size={'small'} />}
     </Pressable>
   );

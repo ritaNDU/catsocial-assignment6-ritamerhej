@@ -1,5 +1,6 @@
 import {Text, ActivityIndicator, Pressable} from 'react-native';
 import React from 'react';
+import styles from './Buttons.styles';
 
 type Props = {
   onPress: () => void;
@@ -9,10 +10,10 @@ type Props = {
 
 const LoadMoreButton = ({onPress, isLoading, endReached}: Props) => {
   return (
-    <Pressable onPress={onPress} style={{marginBottom: 20}}>
-      <Text>
+    <Pressable onPress={onPress} style={styles.loadMore}>
+      <Text style={styles.loadMoreText}>
         {isLoading ? (
-          <ActivityIndicator size={30} />
+          <ActivityIndicator size={'small'} color={'#000'} />
         ) : endReached ? (
           'You have reached the end. Meow!'
         ) : (

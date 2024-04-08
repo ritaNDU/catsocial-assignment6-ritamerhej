@@ -4,7 +4,6 @@ import {Formik} from 'formik';
 import FormInput from '../atoms/Inputs/FormInput';
 import PasswordInputField from '../atoms/Inputs/PasswordInput';
 
-import ErrorText from '../atoms/ErrorText';
 import {SignupSchema} from '../../data/ValidationSchemas/signupSchema';
 import {InitialSignupFormType} from '../../data/formsData.types';
 import {User} from '../../data/data.types';
@@ -50,56 +49,45 @@ const SignupForm = () => {
             handleChangeText={handleChange('firstName')}
             handleBlur={handleBlur('firstName')}
             value={values.firstName}
+            error={errors.firstName}
+            touched={touched.firstName}
           />
-          {errors.firstName && touched.firstName ? (
-            <ErrorText error={errors.firstName} />
-          ) : (
-            <></>
-          )}
           <FormInput
             placeholder="Last name..."
             handleChangeText={handleChange('lastName')}
             handleBlur={handleBlur('lastName')}
             value={values.lastName}
+            error={errors.lastName}
+            touched={touched.lastName}
           />
-          {errors.lastName && touched.lastName ? (
-            <ErrorText error={errors.lastName} />
-          ) : (
-            <></>
-          )}
+
           <FormInput
             placeholder="Email..."
             handleChangeText={handleChange('email')}
             handleBlur={handleBlur('email')}
             value={values.email}
+            error={errors.email}
+            touched={touched.email}
           />
-          {errors.email && touched.email ? (
-            <ErrorText error={errors.email} />
-          ) : (
-            <></>
-          )}
+
           <PasswordInputField
             placeholder={'Password...'}
             handleChangeText={handleChange('password')}
             handleBlur={handleBlur('password')}
             value={values.password}
+            error={errors.password}
+            touched={touched.password}
           />
-          {errors.password && touched.password ? (
-            <ErrorText error={errors.password} />
-          ) : (
-            <></>
-          )}
+
           <PasswordInputField
             placeholder={'Repeat password...'}
             handleChangeText={handleChange('repeatPassword')}
             handleBlur={handleBlur('repeatPassword')}
             value={values.repeatPassword}
+            error={errors.repeatPassword}
+            touched={touched.repeatPassword}
           />
-          {errors.repeatPassword && touched.repeatPassword ? (
-            <ErrorText error={errors.repeatPassword} />
-          ) : (
-            <></>
-          )}
+
           <NavigationButton onPress={handleSubmit(submitForm)} name="Submit" />
         </>
       )}

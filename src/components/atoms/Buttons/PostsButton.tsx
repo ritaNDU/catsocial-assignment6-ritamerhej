@@ -1,19 +1,20 @@
 import {Text, Pressable} from 'react-native';
 import React from 'react';
+import styles from './Buttons.styles';
 
 type Props = {
   name: string;
   stats: string;
   onPress: () => void;
 };
-const LikeButton = ({name, onPress, stats}: Props) => {
+const PostsButton = ({name, onPress, stats}: Props) => {
   //TODO: Animate
   return (
-    <Pressable onPress={onPress} style={{flexDirection: 'row', gap: 2}}>
-      <Text>{stats}</Text>
-      <Text>{name}</Text>
+    <Pressable onPress={onPress} style={styles.post}>
+      <Text style={styles.postText}>{name}</Text>
+      <Text style={styles.postText}>{stats}</Text>
     </Pressable>
   );
 };
 
-export default LikeButton;
+export default PostsButton;

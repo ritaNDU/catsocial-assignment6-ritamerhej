@@ -1,5 +1,6 @@
 import {Text, Pressable} from 'react-native';
 import React from 'react';
+import styles from './Buttons.styles';
 
 type Props = {
   isFriend: boolean;
@@ -7,8 +8,10 @@ type Props = {
 };
 const AddFriendsButton = ({isFriend, onPress}: Props) => {
   return (
-    <Pressable onPress={onPress}>
-      <Text>{isFriend ? 'Remove' : 'Follow'}</Text>
+    <Pressable onPress={onPress} style={styles.addFriendsButton}>
+      <Text style={styles.addFriendsButtonText}>
+        {isFriend ? 'Remove' : 'Follow'}
+      </Text>
     </Pressable>
   );
 };

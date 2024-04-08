@@ -6,7 +6,6 @@ import FormInput from '../atoms/Inputs/FormInput';
 import PasswordInputField from '../atoms/Inputs/PasswordInput';
 import base64 from 'react-native-base64';
 
-import ErrorText from '../atoms/ErrorText';
 import {SigninSchema} from '../../data/ValidationSchemas/signinSchema';
 import {InitialSigninFormType} from '../../data/formsData.types';
 import {getAllUsersFromApi} from '../../service/usersApi';
@@ -27,6 +26,7 @@ const SigninForm = () => {
   const handleSignin = async (values: InitialSigninFormType) => {
     const allUsers = await getAllUsersFromApi();
     let user = getUserByEmail(allUsers, values.email);
+    console.log(user);
     if (user && user.password === values.password) {
       user.token = base64.encode(`${user.id} ${user.email}`);
       await signUserIn(user);
@@ -48,23 +48,18 @@ const SigninForm = () => {
             handleChangeText={handleChange('email')}
             handleBlur={handleBlur('email')}
             value={values.email}
+            error={errors.email}
+            touched={touched.email}
           />
-          {errors.email && touched.email ? (
-            <ErrorText error={errors.email} />
-          ) : (
-            <></>
-          )}
+
           <PasswordInputField
             placeholder={'Password'}
             handleChangeText={handleChange('password')}
             handleBlur={handleBlur('password')}
             value={values.password}
+            error={errors.password}
+            touched={touched.password}
           />
-          {errors.password && touched.password ? (
-            <ErrorText error={errors.password} />
-          ) : (
-            <></>
-          )}
           <NavigationButton onPress={handleSubmit(submitForm)} name="Submit" />
         </>
       )}
