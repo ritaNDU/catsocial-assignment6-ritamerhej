@@ -42,7 +42,7 @@ const PostCardsList = ({
       />
     );
   } else {
-    return <Text style={styles.title}>No cats to show!</Text>;
+    return <Text style={styles.title}>No Meows to show!</Text>;
   }
 };
 

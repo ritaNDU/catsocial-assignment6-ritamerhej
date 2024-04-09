@@ -37,7 +37,7 @@ const FriendsScreen = () => {
           endReached={endReached}
         />
       ) : (
-        <Text style={styles.title}>No more cats to show.</Text>
+        <Text style={styles.title}>No Cat Parents to show.</Text>
       )}
     </SafeAreaView>
   );

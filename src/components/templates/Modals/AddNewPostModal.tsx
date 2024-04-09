@@ -79,7 +79,7 @@ const AddNewPostModal = ({handleClose, isVisible}: Props) => {
           <Image source={{uri: post.imageUri}} style={styles.image} />
         )}
         <NavigationButton
-          name="Create Post"
+          name="Create Meow"
           onPress={addPost}
           styleProp={styles.create}
         />
