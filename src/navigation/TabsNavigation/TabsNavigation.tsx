@@ -4,6 +4,7 @@ import FriendsScreen from '../../screens/FeedsScreen/FriendsScreen';
 import FeedScreen from '../../screens/FeedsScreen/FeedScreen';
 import {Image, ImageSourcePropType} from 'react-native';
 import styles from './TabsNavigation.style';
+import theme from '../../style/theme';
 
 const Tabs = createBottomTabNavigator();
 const addLogo = (image: ImageSourcePropType) => () => {
@@ -15,14 +16,16 @@ const TabsNavigation = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#000',
-        tabBarActiveBackgroundColor: '#efefef',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveBackgroundColor: theme.colors.activeTabBackground,
+        tabBarInactiveTintColor: '#bcbcbc',
+        tabBarLabelStyle: {fontWeight: '900'},
       }}>
       <Tabs.Screen
         name="Feed"
         component={FeedScreen}
         options={{
           tabBarIcon: addLogo(require('../../assets/icons/feed.png')),
+          title: 'Feed',
         }}
       />
       <Tabs.Screen

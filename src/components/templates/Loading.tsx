@@ -1,6 +1,7 @@
 import {View, Image, ActivityIndicator} from 'react-native';
 import React from 'react';
 import styles from './Loading.styles';
+import theme from '../../style/theme';
 
 const Loading = () => {
   return (
@@ -10,7 +11,7 @@ const Loading = () => {
         style={styles.image}
         resizeMode="contain"
       />
-      <ActivityIndicator size={30} color="#000" />
+      <ActivityIndicator size={30} color={theme.colors.primary} />
     </View>
   );
 };

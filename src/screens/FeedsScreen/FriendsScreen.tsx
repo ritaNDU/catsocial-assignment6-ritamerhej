@@ -1,4 +1,4 @@
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 import React from 'react';
 import useManageUsersFetching from '../../hooks/useManageUsersFetching';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
@@ -27,14 +27,18 @@ const FriendsScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <PersonCardsList
-        peopleList={friends}
-        isRefreshing={refresh}
-        onRefresh={handleRefresh}
-        handleLoadMore={handleLoadMore(pageToFetch)}
-        isLoading={isLoading}
-        endReached={endReached}
-      />
+      {friends.length > 0 ? (
+        <PersonCardsList
+          peopleList={friends}
+          isRefreshing={refresh}
+          onRefresh={handleRefresh}
+          handleLoadMore={handleLoadMore(pageToFetch)}
+          isLoading={isLoading}
+          endReached={endReached}
+        />
+      ) : (
+        <Text style={styles.title}>No more cats to show.</Text>
+      )}
     </SafeAreaView>
   );
 };

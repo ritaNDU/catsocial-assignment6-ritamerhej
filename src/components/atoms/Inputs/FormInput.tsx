@@ -16,7 +16,7 @@ const FormInput = ({
     <View>
       <TextInput
         placeholder={placeholder}
-        placeholderTextColor={'lightgray'}
+        placeholderTextColor={'gray'}
         onChangeText={handleChangeText}
         onBlur={handleBlur}
         value={value}

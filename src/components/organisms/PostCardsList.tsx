@@ -3,6 +3,7 @@ import React from 'react';
 import {Post} from '../../data/data.types';
 import LoadMoreButton from '../atoms/Buttons/LoadMoreButton';
 import PostCard from '../molecules/PostCard';
+import styles from '../templates/AuthenticationSreensTemplate.style';
 
 type Props = {
   postsList: Post[];
@@ -41,7 +42,7 @@ const PostCardsList = ({
       />
     );
   } else {
-    return <Text>No cats to show!</Text>;
+    return <Text style={styles.title}>No cats to show!</Text>;
   }
 };
 

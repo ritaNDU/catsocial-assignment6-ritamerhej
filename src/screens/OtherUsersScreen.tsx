@@ -1,10 +1,11 @@
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 import React from 'react';
 import PersonCardsList from '../components/organisms/PersonCardsList';
 import useManageUsersFetching from '../hooks/useManageUsersFetching';
 import {USERS_LIMIT} from '../service/api.data';
 import useManageSingedInUser from '../hooks/useManageSignedInUser';
 import styles from './commonStyles';
+import LoadMoreButton from '../components/atoms/Buttons/LoadMoreButton';
 
 const OtherUsersScreen = () => {
   const {
@@ -28,14 +29,26 @@ const OtherUsersScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <PersonCardsList
-        peopleList={nonFriends}
-        isRefreshing={refresh}
-        onRefresh={handleRefresh}
-        handleLoadMore={handleLoadMore(pageToFetch)}
-        isLoading={isLoading}
-        endReached={endReached}
-      />
+      {nonFriends.length > 0 ? (
+        <PersonCardsList
+          peopleList={nonFriends}
+          isRefreshing={refresh}
+          onRefresh={handleRefresh}
+          handleLoadMore={handleLoadMore(pageToFetch)}
+          isLoading={isLoading}
+          endReached={endReached}
+        />
+      ) : (
+        <>
+          <Text style={styles.title}>No more cats to show.</Text>
+          <LoadMoreButton
+            onPress={handleRefresh}
+            isLoading={isLoading}
+            endReached={endReached}
+            name="Refresh"
+          />
+        </>
+      )}
     </SafeAreaView>
   );
 };

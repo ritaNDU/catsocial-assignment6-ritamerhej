@@ -3,7 +3,6 @@ import useManageSecureStorage from '../hooks/useManageSecureStorage';
 import NativeStackNavigator from './NativeStackNavigation/NativeStackNavigator';
 import DrawerNavigation from './DrawerNavigation/DrawerNavigation';
 import useManageSingedInUser from '../hooks/useManageSignedInUser';
-import {ActivityIndicator, Text} from 'react-native';
 import Loading from '../components/templates/Loading';
 
 const MainNavigator = () => {

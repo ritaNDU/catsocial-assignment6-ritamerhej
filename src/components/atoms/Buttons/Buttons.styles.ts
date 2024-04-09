@@ -3,7 +3,7 @@ import theme from '../../../style/theme';
 
 const commonButtonStyles: ViewStyle = {
   padding: 5,
-  backgroundColor: '#fff',
+  backgroundColor: theme.colors.primary,
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 30,
@@ -11,14 +11,14 @@ const commonButtonStyles: ViewStyle = {
 
 const commonTextStyle: TextStyle = {
   fontSize: 12,
-  color: '#000',
+  color: theme.colors.accentColor,
+  fontWeight: '900',
 };
 
 const styles = StyleSheet.create({
   addFriendsButton: {
     ...commonButtonStyles,
     width: '100%',
-    backgroundColor: 'lightgray',
   },
 
   addFriendsButtonText: {
@@ -35,13 +35,14 @@ const styles = StyleSheet.create({
     ...commonTextStyle,
   },
 
-  navigationText: {},
+  navigationText: {
+    ...commonTextStyle,
+  },
 
   navigation: {
     ...commonButtonStyles,
     flexDirection: 'row',
     gap: 4,
-    backgroundColor: 'lightgray',
   },
   post: {flexDirection: 'row', gap: 4},
   postText: {

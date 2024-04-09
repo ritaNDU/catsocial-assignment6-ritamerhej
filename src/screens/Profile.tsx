@@ -1,15 +1,19 @@
 import {View, Text, Alert} from 'react-native';
 import React, {useEffect} from 'react';
+
 import AddNewPostModal from '../components/templates/Modals/AddNewPostModal';
 import useManageModal from '../hooks/useManageModal';
 import NavigationButton from '../components/atoms/Buttons/NavigationButton';
 import PostCardsList from '../components/organisms/PostCardsList';
+
+import styles from './commonStyles';
+
 import useManagePostsFetching from '../hooks/useManagePostsFetching';
 import useManageSingedInUser from '../hooks/useManageSignedInUser';
-import {POSTS_LIMIT} from '../service/api.data';
 import useManageUser from '../hooks/useManageUser';
-import styles from './commonStyles';
 import {useNavigation} from '@react-navigation/native';
+
+import {POSTS_LIMIT} from '../service/api.data';
 
 const Profile = () => {
   const {closeModal, openModal, visible} = useManageModal();
@@ -51,6 +55,7 @@ const Profile = () => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <View style={styles.container}>
       <NavigationButton name="Add new Meow" onPress={openModal} />

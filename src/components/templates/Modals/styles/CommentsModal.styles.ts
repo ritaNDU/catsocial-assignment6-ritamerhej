@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: theme.fontSize.large,
     fontWeight: '600',
-    color: '#000',
+    color: theme.colors.textColor,
   },
   commentsContainer: {},
   container: {

@@ -4,6 +4,7 @@ import OtherUsersScreen from '../../screens/OtherUsersScreen';
 import Profile from '../../screens/Profile';
 import TabsNavigation from '../TabsNavigation/TabsNavigation';
 import OtherUserProfile from '../../screens/OtherUserProfile';
+import theme from '../../style/theme';
 
 const Drawer = createDrawerNavigator();
 
@@ -12,8 +13,12 @@ const DrawerNavigation = () => {
     <Drawer.Navigator
       screenOptions={{
         drawerContentStyle: {backgroundColor: '#fff'},
-        drawerActiveBackgroundColor: '#efefef',
-        drawerActiveTintColor: '#000',
+        drawerActiveBackgroundColor: theme.colors.activeTabBackground,
+        drawerActiveTintColor: theme.colors.textColor,
+        headerStyle: {
+          backgroundColor: theme.colors.backgroundColor,
+        },
+        headerShadowVisible: false,
       }}>
       <Drawer.Screen
         name="FeedsNavigation"

@@ -1,4 +1,4 @@
-import {Text, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import React from 'react';
 import {User} from '../../data/data.types';
 import PersonCard from '../molecules/PersonCard';
@@ -10,8 +10,8 @@ import {DrawerNavigatorNavigationProps} from '../../navigation/DrawerNavigation/
 
 type Props = {
   peopleList: User[];
-  isRefreshing?: boolean;
-  onRefresh?: () => void;
+  isRefreshing: boolean;
+  onRefresh: () => void;
   handleLoadMore: () => void;
   isLoading: boolean;
   endReached: boolean;
@@ -38,9 +38,11 @@ const PersonCardsList = ({
     await modifyUserFromApi(modifiedUser);
     await loadSignedInUser(signedInUser.id);
   };
+
   const handleGoToUserProfile = (userId: string) => () => {
     navigation.navigate('OtherUserProfile', {userId: userId});
   };
+
   const renderItem = ({item}: {item: User}) => {
     const areFriends = signedInUser.friendsIds.includes(item.id);
     return (
@@ -52,25 +54,22 @@ const PersonCardsList = ({
       />
     );
   };
-  if (peopleList.length > 0) {
-    return (
-      <FlatList
-        data={peopleList}
-        renderItem={renderItem}
-        refreshing={isRefreshing}
-        onRefresh={onRefresh}
-        ListFooterComponent={
-          <LoadMoreButton
-            onPress={handleLoadMore}
-            isLoading={isLoading}
-            endReached={endReached}
-          />
-        }
-      />
-    );
-  } else {
-    return <Text>No cat parents to show!</Text>;
-  }
+
+  return (
+    <FlatList
+      data={peopleList}
+      renderItem={renderItem}
+      refreshing={isRefreshing}
+      onRefresh={onRefresh}
+      ListFooterComponent={
+        <LoadMoreButton
+          onPress={handleLoadMore}
+          isLoading={isLoading}
+          endReached={endReached}
+        />
+      }
+    />
+  );
 };
 
 export default PersonCardsList;

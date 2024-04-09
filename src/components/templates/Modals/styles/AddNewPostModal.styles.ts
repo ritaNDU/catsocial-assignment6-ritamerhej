@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: theme.fontSize.large,
     fontWeight: '500',
-    color: '#000',
+    color: theme.colors.textColor,
   },
   image: {
     width: '100%',
