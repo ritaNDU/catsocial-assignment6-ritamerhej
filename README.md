@@ -25,21 +25,22 @@ A Meow: it's a post in regular Social Media jargon.
 
 ## How I Got Organized
 
-I drew a plan for my app on pen and paper. I then figured out hoe the data should flow in the app, and what data was needed and what was its architecture. Then, I started implementing each feature one by one.
+I drew a plan for my app on pen and paper. I then figured out how the data should flow in the app, and what data was needed and what was its architecture. Then, I started implementing each feature one by one.
 
 ## Challenges Faced
 
 ### Design
 
-I have no taste in design. It was really hard to figure out what design looked good, especially for a kids app and I don't think I got it perfectly right. At the end I came up with a design that kids might like.
+I have no taste in design. It was really hard to figure out what design looked good, especially for a kids app and I don't think I got it perfectly right. At the end, after some googling and after checkimg out some designs, I came up with a design that kids might like.
 
-### Autentication
+### Authentication
 
 The token was not being loaded properly on app start. At the end I figured out that the issue was with the useEffect.
 
 ### Posts and Users fetching
 
-As sorting and filtering was not handled by the api as I needed it, I had a rough time fetching posts and users and adding pagination. At the end, I added a big limit to be able to fetch all users. There's still a bug. If you create a new user, and that new user creates a post, and that post is the 16th, it won't show on the user's profile. I coouldn't find a way to fix this.
+As sorting and filtering was not handled by the api as I needed it, I had a rough time fetching posts and users and adding pagination. At the end, I added a big limit for posts to be able to fetch all posts while keeping pagination functional. I wanted to create my own api with flask, but I ran out of time. 
+There's still a bug. If you create a new user, and that new user creates a post, and that post is the 16th (limit + 1), it won't show on the user's profile. I couldn't find a way to fix this while keeping pagination.
 
 ### Notification Problem
 
