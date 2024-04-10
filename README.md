@@ -32,6 +32,10 @@ The token was not being loaded properly on app start. At the end I figured out t
 
 As sorting and filtering was not handled by the api as I needed it, I had a rough time fetching posts and users and adding pagination. At the end, I added a big limit to be able to fetch all users. There's still a bug. If you create a new user, and that new user creates a post, and that post is the 16th, it won't show on the user's profile. I coouldn't find a way to fix this.
 
+## Notification Problem
+
+I had a bug with the notification feature. Whenever I sent a notification at a specific time, it would send it infinitely many times. After some googling I was able to solve the issue.
+
 ## Folder Structure
 
 The code is all located in the src/ folder.
