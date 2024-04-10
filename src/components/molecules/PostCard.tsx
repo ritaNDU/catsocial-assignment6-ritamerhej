@@ -50,4 +50,4 @@ const PostCard = ({post}: Props) => {
   );
 };
 
-export default memo(PostCard);
+export default PostCard;
