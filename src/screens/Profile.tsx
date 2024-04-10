@@ -56,6 +56,13 @@ const Profile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (!visible) {
+      console.log('fired');
+      handleRefresh();
+    }
+  }, [visible]);
+
   return (
     <View style={styles.container}>
       <NavigationButton name="Add new Meow" onPress={openModal} />
