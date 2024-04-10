@@ -12,7 +12,6 @@ const useManagePostsFetching = () => {
   const handleLoadMore = (page: string) => async () => {
     setIsLoading(true);
     const posts = await getPostsFromApi(page);
-    console.log(posts[0]);
     setIsLoading(false);
     if (posts.length === 0 || allPosts.length % POSTS_LIMIT !== 0) {
       setEndReached(true);

@@ -39,7 +39,6 @@ const useManagePosts = () => {
   };
 
   const clearPost = () => {
-    console.log('fired');
     setPost({
       id: '1',
       userId: signedInUser.id,
