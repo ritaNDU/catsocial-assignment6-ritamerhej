@@ -2,8 +2,11 @@
 
 ## Description
 
-Cutie Kat is a social media app for cats. You can upload your cat's cutest pictures, follow your friends and have them see your cutie cat's cuteness.
-Whenever you add a new post, make sure to refresh the feed on your profile to see it.
+Cutie Kat is a social media app for kids to share their favorite pets pictures. Kids can upload their cat's (or dog's, eventhough they're not welcome between felines...) cutest pictures, follow their friends and have them see their cutie cat's cuteness. Kids can also write random cat quotes, without pictures. When they add no picture, our mascot "Bisse the Cat" will be showing in their new Meow.
+Whenever your kid adds a new Meow, make sure to have them refresh the feed on their profile to see it.
+
+## Definition
+A Meow: it's a post in regular Social Media jargon.
 
 ## How to run the code
 
@@ -22,7 +25,7 @@ I drew a plan for my app on pen and paper. I then figured out hoe the data shoul
 
 ### Design
 
-I have no taste in design. It was really hard to figure out what design looked good, and I don't think I got it perfectly right.
+I have no taste in design. It was really hard to figure out what design looked good, especially for a kids app and I don't think I got it perfectly right. At the end I came up with a design that kids might like.
 
 ### Autentication
 
