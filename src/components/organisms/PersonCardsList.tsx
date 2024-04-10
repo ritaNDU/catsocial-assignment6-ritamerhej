@@ -2,11 +2,7 @@ import {FlatList} from 'react-native';
 import React from 'react';
 import {User} from '../../data/data.types';
 import PersonCard from '../molecules/PersonCard';
-import useManageSingedInUser from '../../hooks/useManageSignedInUser';
-import {modifyUserFromApi} from '../../service/usersApi';
 import LoadMoreButton from '../atoms/Buttons/LoadMoreButton';
-import {useNavigation} from '@react-navigation/native';
-import {DrawerNavigatorNavigationProps} from '../../navigation/DrawerNavigation/DrawerNavigation.types';
 
 type Props = {
   peopleList: User[];
@@ -25,34 +21,8 @@ const PersonCardsList = ({
   isLoading,
   endReached,
 }: Props) => {
-  const {signedInUser, loadSignedInUser} = useManageSingedInUser();
-  const navigation = useNavigation<DrawerNavigatorNavigationProps>();
-
-  const manageFriend = (friendId: string) => async () => {
-    const updatedFriendsId = signedInUser.friendsIds.includes(friendId)
-      ? signedInUser.friendsIds.filter(id => id !== friendId)
-      : [...signedInUser.friendsIds, friendId];
-
-    const modifiedUser = {...signedInUser, friendsIds: updatedFriendsId};
-
-    await modifyUserFromApi(modifiedUser);
-    await loadSignedInUser(signedInUser.id);
-  };
-
-  const handleGoToUserProfile = (userId: string) => () => {
-    navigation.navigate('OtherUserProfile', {userId: userId});
-  };
-
   const renderItem = ({item}: {item: User}) => {
-    const areFriends = signedInUser.friendsIds.includes(item.id);
-    return (
-      <PersonCard
-        isFriend={areFriends}
-        name={item.name}
-        manageFriend={manageFriend(item.id)}
-        onPress={handleGoToUserProfile(item.id)}
-      />
-    );
+    return <PersonCard name={item.name} friendId={item.id} />;
   };
 
   return (

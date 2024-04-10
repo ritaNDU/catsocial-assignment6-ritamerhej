@@ -22,7 +22,8 @@ type Props = {
 
 const AddNewPostModal = ({handleClose, isVisible}: Props) => {
   const {openModal, closeModal, visible} = useManageModal();
-  const {post, addPost, addImageToPost, addTextToPost} = useManagePosts();
+  const {post, addPost, addImageToPost, addTextToPost, clearPost} =
+    useManagePosts();
   const {askStoragePermissions} = useManagePermissions();
 
   const handleChangeText = (text: string | ChangeEvent) => {
@@ -61,9 +62,17 @@ const AddNewPostModal = ({handleClose, isVisible}: Props) => {
       Linking.openSettings();
     }
   }
+  const handleCloseModal = () => {
+    clearPost();
+    handleClose();
+  };
+  const addNewPost = () => {
+    addPost();
+    clearPost();
+  };
 
   return (
-    <ModalTemplate handleClose={handleClose} isVisible={isVisible}>
+    <ModalTemplate handleClose={handleCloseModal} isVisible={isVisible}>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>Add a new Meow</Text>
         <FormInput
@@ -80,7 +89,7 @@ const AddNewPostModal = ({handleClose, isVisible}: Props) => {
         )}
         <NavigationButton
           name="Create Meow"
-          onPress={addPost}
+          onPress={addNewPost}
           styleProp={styles.create}
         />
         <CameraModal

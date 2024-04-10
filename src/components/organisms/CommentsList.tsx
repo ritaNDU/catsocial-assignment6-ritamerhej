@@ -8,6 +8,7 @@ type Props = {
 };
 const CommentsList = ({comments}: Props) => {
   const renderItem = ({item}: {item: Comment}) => {
+    console.log(item.userId);
     return <CommentCard userId={item.userId} commentText={item.text} />;
   };
 

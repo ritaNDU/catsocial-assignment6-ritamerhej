@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {POSTS_LIMIT} from '../service/api.data';
 import useManageAllPosts from './useManageAllPosts';
 import {getPostsFromApi} from '../service/postsApi';
@@ -12,6 +12,7 @@ const useManagePostsFetching = () => {
   const handleLoadMore = (page: string) => async () => {
     setIsLoading(true);
     const posts = await getPostsFromApi(page);
+    console.log(posts[0]);
     setIsLoading(false);
     if (posts.length === 0 || allPosts.length % POSTS_LIMIT !== 0) {
       setEndReached(true);
@@ -27,16 +28,12 @@ const useManagePostsFetching = () => {
     storePosts(posts);
   }
 
-  const handleRefresh = useCallback(
-    () => async () => {
-      setRefresh(true);
-      handleInitialFetch();
-      setEndReached(false);
-      setRefresh(false);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
+  const handleRefresh = async () => {
+    setRefresh(true);
+    handleInitialFetch();
+    setEndReached(false);
+    setRefresh(false);
+  };
 
   useEffect(() => {
     handleInitialFetch();

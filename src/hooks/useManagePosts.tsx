@@ -38,7 +38,24 @@ const useManagePosts = () => {
     setPost({...post, text: newText});
   };
 
-  return {post, addPost, addImageToPost, addTextToPost};
+  const clearPost = () => {
+    console.log('fired');
+    setPost({
+      id: '1',
+      userId: signedInUser.id,
+      text: '',
+      imageUri: '',
+      comments: [],
+      publicationDate: `${JSON.stringify(new Date().getDate()).padStart(
+        2,
+        '0',
+      )}/${JSON.stringify(new Date().getMonth() + 1).padStart(
+        2,
+        '0',
+      )}/${JSON.stringify(new Date().getFullYear())}`,
+    });
+  };
+  return {post, addPost, addImageToPost, addTextToPost, clearPost};
 };
 
 export default useManagePosts;

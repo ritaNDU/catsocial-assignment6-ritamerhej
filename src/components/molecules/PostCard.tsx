@@ -35,9 +35,19 @@ const PostCard = ({post}: Props) => {
         </View>
       </View>
       <View style={styles.content}>
-        {post.text !== '' && <Text style={styles.text}>{post.text}</Text>}
-        {post.imageUri !== '' && (
+        {post.text !== '' ? (
+          <Text style={styles.text}>{post.text}</Text>
+        ) : (
+          <></>
+        )}
+        {post.imageUri !== '' ? (
           <Image source={{uri: post.imageUri}} style={styles.image} />
+        ) : (
+          <Image
+            source={require('../../assets/illustrations/catAvatar.png')}
+            style={styles.placeholderImage}
+            resizeMode="center"
+          />
         )}
         <PostsButton
           name="Comments"

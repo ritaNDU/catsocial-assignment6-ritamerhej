@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     ...shadow,
   },
+
   name: {
     fontSize: theme.fontSize.normal,
     fontWeight: '600',
@@ -38,11 +39,11 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   image: {width: '100%', height: 350, borderRadius: 10},
+  placeholderImage: {width: '100%', height: 350},
   postHeader: {flexDirection: 'row', alignItems: 'center', gap: 5},
   content: {
     gap: 3,
   },
-
   buttonGroup: {
     gap: 3,
     marginBottom: 10,

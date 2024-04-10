@@ -21,7 +21,7 @@ const FeedScreen = () => {
       allPosts.filter(post => {
         return signedInUser.friendsIds.includes(post.userId);
       }),
-    [allPosts, signedInUser],
+    [signedInUser.friendsIds, allPosts],
   );
   const pageToFetch = JSON.stringify(
     allPosts.length >= POSTS_LIMIT ? allPosts.length / POSTS_LIMIT + 1 : 1,

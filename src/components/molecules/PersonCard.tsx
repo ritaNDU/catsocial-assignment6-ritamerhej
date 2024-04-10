@@ -3,22 +3,46 @@ import React, {memo} from 'react';
 import AddFriendsButton from '../atoms/Buttons/AddFriendsButton';
 import Avatar from '../atoms/Avatar/Avatar';
 import styles from './molecules.styles';
+import {useNavigation} from '@react-navigation/native';
+import {DrawerNavigatorNavigationProps} from '../../navigation/DrawerNavigation/DrawerNavigation.types';
+import useManageSingedInUser from '../../hooks/useManageSignedInUser';
+import {modifyUserFromApi} from '../../service/usersApi';
 
 type Props = {
   name: string;
-  isFriend: boolean;
-  manageFriend: () => void;
-  onPress: () => void;
+  friendId: string;
 };
-const PersonCard = ({name, isFriend, manageFriend, onPress}: Props) => {
+const PersonCard = ({name, friendId}: Props) => {
+  const {signedInUser, loadSignedInUser} = useManageSingedInUser();
+  const navigation = useNavigation<DrawerNavigatorNavigationProps>();
+
+  const manageFriend = (id: string) => async () => {
+    const updatedFriendsId = signedInUser.friendsIds.includes(id)
+      ? signedInUser.friendsIds.filter(currentId => currentId !== id)
+      : [...signedInUser.friendsIds, id];
+
+    const modifiedUser = {...signedInUser, friendsIds: updatedFriendsId};
+
+    await modifyUserFromApi(modifiedUser);
+    await loadSignedInUser(signedInUser.id);
+  };
+  const isFriend = signedInUser.friendsIds.includes(friendId);
+
+  const handleGoToUserProfile = (userId: string) => () => {
+    navigation.navigate('OtherUserProfile', {userId: userId});
+  };
+
   return (
     <View style={styles.personCardContainer}>
       <Avatar />
       <View style={styles.personCardContent}>
-        <Pressable onPress={onPress}>
+        <Pressable onPress={handleGoToUserProfile(friendId)}>
           <Text style={styles.name}>{name}</Text>
         </Pressable>
-        <AddFriendsButton onPress={manageFriend} isFriend={isFriend} />
+        <AddFriendsButton
+          onPress={manageFriend(friendId)}
+          isFriend={isFriend}
+        />
       </View>
     </View>
   );
