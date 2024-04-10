@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {getUserFromApi} from '../../service/usersApi';
 import styles from './molecules.styles';
 type Props = {
@@ -26,4 +26,4 @@ const CommentCard = ({userId, commentText}: Props) => {
   );
 };
 
-export default CommentCard;
+export default memo(CommentCard);

@@ -1,5 +1,5 @@
 import {View, Text, Image} from 'react-native';
-import React, {memo, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PostsButton from '../atoms/Buttons/PostsButton';
 import {getUserFromApi} from '../../service/usersApi';
 import {Post} from '../../data/data.types';
@@ -23,6 +23,7 @@ const PostCard = ({post}: Props) => {
     getUserName();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const commentsStats = JSON.stringify(post.comments.length);
 
   return (
     <View style={styles.container}>
@@ -40,7 +41,7 @@ const PostCard = ({post}: Props) => {
         )}
         <PostsButton
           name="Comments"
-          stats={JSON.stringify(post.comments.length)}
+          stats={commentsStats}
           onPress={openModal}
         />
       </View>
