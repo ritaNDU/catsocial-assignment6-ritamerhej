@@ -1,5 +1,5 @@
 import {SafeAreaView, Text} from 'react-native';
-import React from 'react';
+import React, {useMemo} from 'react';
 import PersonCardsList from '../components/organisms/PersonCardsList';
 import useManageUsersFetching from '../hooks/useManageUsersFetching';
 import {USERS_LIMIT} from '../service/api.data';
@@ -21,10 +21,14 @@ const OtherUsersScreen = () => {
   const pageToFetch = JSON.stringify(
     allUsers.length >= USERS_LIMIT ? allUsers.length / USERS_LIMIT + 1 : 1,
   );
-  const nonFriends = allUsers.filter(
-    person =>
-      !signedInUser.friendsIds.includes(person.id) &&
-      person.id !== signedInUser.id,
+  const nonFriends = useMemo(
+    () =>
+      allUsers.filter(
+        person =>
+          !signedInUser.friendsIds.includes(person.id) &&
+          person.id !== signedInUser.id,
+      ),
+    [signedInUser.friendsIds],
   );
 
   return (

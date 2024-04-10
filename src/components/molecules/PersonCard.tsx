@@ -1,5 +1,5 @@
 import {View, Pressable, Text} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import AddFriendsButton from '../atoms/Buttons/AddFriendsButton';
 import Avatar from '../atoms/Avatar/Avatar';
 import styles from './molecules.styles';
@@ -24,4 +24,4 @@ const PersonCard = ({name, isFriend, manageFriend, onPress}: Props) => {
   );
 };
 
-export default PersonCard;
+export default memo(PersonCard);

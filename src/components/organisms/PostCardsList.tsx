@@ -22,10 +22,8 @@ const PostCardsList = ({
   isLoading,
   endReached,
 }: Props) => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-
   const renderItem = ({item}: {item: Post}) => {
-    // Here I had to pass in the whole item as passing the props one by one creates synchronisation problems
+    // Here I had to pass in the whole item instead of passing the props one by one as it creates synchronisation problems
     return <PostCard post={item} />;
   };
   if (postsList.length > 0) {

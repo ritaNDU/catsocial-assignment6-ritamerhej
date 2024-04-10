@@ -1,5 +1,5 @@
 import {SafeAreaView, Text} from 'react-native';
-import React from 'react';
+import React, {useMemo} from 'react';
 import useManageUsersFetching from '../../hooks/useManageUsersFetching';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
 import {USERS_LIMIT} from '../../service/api.data';
@@ -21,8 +21,10 @@ const FriendsScreen = () => {
     allUsers.length >= USERS_LIMIT ? allUsers.length / USERS_LIMIT + 1 : 1,
   );
 
-  const friends = allUsers.filter(person =>
-    signedInUser.friendsIds.includes(person.id),
+  const friends = useMemo(
+    () =>
+      allUsers.filter(person => signedInUser.friendsIds.includes(person.id)),
+    [signedInUser.friendsIds],
   );
 
   return (
