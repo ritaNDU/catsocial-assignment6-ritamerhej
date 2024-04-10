@@ -9,7 +9,6 @@ Chupa.merhej@hotmail.com
 ## Description
 
 Cutie Kat is a social media app for kids to share their favorite pets pictures. Kids can upload their cat's (or dog's, eventhough they're not welcome between felines...) cutest pictures, follow their friends and have them see their cutie cat's cuteness. Kids can also write random cat quotes, without pictures. When they add no picture, our mascot "Bisse the Cat" will be showing in their new Meow.
-Whenever your kid adds a new Meow, make sure to have them refresh the feed on their profile to see it.
 
 ## Definition
 A Meow: it's a post in regular Social Media jargon.
