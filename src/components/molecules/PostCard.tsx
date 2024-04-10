@@ -1,5 +1,5 @@
 import {View, Text, Image} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import PostsButton from '../atoms/Buttons/PostsButton';
 import {getUserFromApi} from '../../service/usersApi';
 import {Post} from '../../data/data.types';
@@ -50,4 +50,4 @@ const PostCard = ({post}: Props) => {
   );
 };
 
-export default PostCard;
+export default memo(PostCard);

@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useMemo} from 'react';
 import PostCardsList from '../../components/organisms/PostCardsList';
 import {POSTS_LIMIT} from '../../service/api.data';
 import useManageSingedInUser from '../../hooks/useManageSignedInUser';
@@ -16,9 +16,13 @@ const FeedScreen = () => {
     handleRefresh,
   } = useManagePostsFetching();
   const {signedInUser} = useManageSingedInUser();
-  const friendsPosts = allPosts.filter(post => {
-    return signedInUser.friendsIds.includes(post.userId);
-  });
+  const friendsPosts = useMemo(
+    () =>
+      allPosts.filter(post => {
+        return signedInUser.friendsIds.includes(post.userId);
+      }),
+    [allPosts, signedInUser],
+  );
   const pageToFetch = JSON.stringify(
     allPosts.length >= POSTS_LIMIT ? allPosts.length / POSTS_LIMIT + 1 : 1,
   );
