@@ -1,5 +1,5 @@
 import {Text, FlatList} from 'react-native';
-import React, {useCallback} from 'react';
+import React from 'react';
 import {Post} from '../../data/data.types';
 import LoadMoreButton from '../atoms/Buttons/LoadMoreButton';
 import PostCard from '../molecules/PostCard';
@@ -23,7 +23,6 @@ const PostCardsList = ({
   endReached,
 }: Props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onLoadMore = useCallback(handleLoadMore, []);
 
   const renderItem = ({item}: {item: Post}) => {
     // Here I had to pass in the whole item as passing the props one by one creates synchronisation problems
@@ -38,7 +37,7 @@ const PostCardsList = ({
         onRefresh={onRefresh}
         ListFooterComponent={
           <LoadMoreButton
-            onPress={onLoadMore}
+            onPress={handleLoadMore}
             isLoading={isLoading}
             endReached={endReached}
           />
