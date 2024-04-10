@@ -26,6 +26,7 @@ const PostCardsList = ({
   const onLoadMore = useCallback(handleLoadMore, []);
 
   const renderItem = ({item}: {item: Post}) => {
+    // Here I had to pass in the whole item as passing the props one by one creates synchronisation problems
     return <PostCard post={item} />;
   };
   if (postsList.length > 0) {
