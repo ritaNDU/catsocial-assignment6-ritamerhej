@@ -24,15 +24,15 @@ I drew a plan for my app on pen and paper. I then figured out hoe the data shoul
 
 I have no taste in design. It was really hard to figure out what design looked good, and I don't think I got it perfectly right.
 
-## Autentication
+### Autentication
 
 The token was not being loaded properly on app start. At the end I figured out that the issue was with the useEffect.
 
-## Posts and Users fetching
+### Posts and Users fetching
 
 As sorting and filtering was not handled by the api as I needed it, I had a rough time fetching posts and users and adding pagination. At the end, I added a big limit to be able to fetch all users. There's still a bug. If you create a new user, and that new user creates a post, and that post is the 16th, it won't show on the user's profile. I coouldn't find a way to fix this.
 
-## Notification Problem
+### Notification Problem
 
 I had a bug with the notification feature. Whenever I sent a notification at a specific time, it would send it infinitely many times. After some googling I was able to solve the issue.
 
