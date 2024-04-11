@@ -7,10 +7,17 @@ Chupa.merhej@hotmail.com
 1234567890
 
 ### Links
-[Rita](cutiekat://profile/1)
-[Roy](cutiekat://profile/2)
-[Bisse](cutiekat://profile/3)
-[Chupa](cutiekat://profile/4)
+[Rita]
+(cutiekat://profile/1)
+
+[Roy]
+(cutiekat://profile/2)
+
+[Bisse]
+(cutiekat://profile/3)
+
+[Chupa]
+(cutiekat://profile/4)
 
 
 ## Description
