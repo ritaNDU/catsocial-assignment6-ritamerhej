@@ -1,4 +1,8 @@
 # Cutie Kat
+## Profiling Session 
+Profiling data is stored in a file called: profiling-data.04-10-2024.13-59-33.json
+
+Upload it to react-devtools's profiler to check the profiling session.
 ## Testing Accounts 
 ### emails: 
 Rita.merhej@hotmail.com Roy.merhej@hotmail.com Bisse.merhej@hotmail.com
