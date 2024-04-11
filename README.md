@@ -7,6 +7,8 @@ Upload it to react-devtools's profiler to check the profiling session.
 There's also a screenshot called:
 IMG-20240410-WA0011.jpg
 
+I got these results by using the app as a normal user would, from login till logout.
+
 ## Testing Accounts 
 ### emails: 
 Rita.merhej@hotmail.com Roy.merhej@hotmail.com Bisse.merhej@hotmail.com
