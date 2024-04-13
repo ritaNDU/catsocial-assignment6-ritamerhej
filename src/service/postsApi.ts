@@ -9,7 +9,7 @@ export function storePostInApi(post: Post) {
     .catch(() =>
       Alert.alert("An error occured. Your post couldn't be added. Try again."),
     );
-  Alert.alert('Post added successfully.');
+  Alert.alert('Meow added successfully.');
 }
 
 export async function getPostsFromApi(page: string) {
