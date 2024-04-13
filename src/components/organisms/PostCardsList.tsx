@@ -23,8 +23,16 @@ const PostCardsList = ({
   endReached,
 }: Props) => {
   const renderItem = ({item}: {item: Post}) => {
-    // Here I had to pass in the whole item instead of passing the props one by one as it creates synchronisation problems
-    return <PostCard post={item} />;
+    return (
+      <PostCard
+        id={item.id}
+        userId={item.userId}
+        text={item.text}
+        imageUri={item.imageUri}
+        comments={item.comments}
+        publicationDate={item.publicationDate}
+      />
+    );
   };
   if (postsList.length > 0) {
     return (

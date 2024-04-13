@@ -1,5 +1,5 @@
 import {View, Text, Image} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import PostsButton from '../atoms/Buttons/PostsButton';
 import {getUserFromApi} from '../../service/usersApi';
 import {Post} from '../../data/data.types';
@@ -8,22 +8,27 @@ import useManageModal from '../../hooks/useManageModal';
 import Avatar from '../atoms/Avatar/Avatar';
 import styles from './molecules.styles';
 
-type Props = {
-  post: Post;
-};
-const PostCard = ({post}: Props) => {
+type Props = Post;
+const PostCard = ({
+  id,
+  userId,
+  text,
+  imageUri,
+  comments,
+  publicationDate,
+}: Props) => {
   const [name, setName] = useState('');
   const {visible, openModal, closeModal} = useManageModal();
 
   useEffect(() => {
     const getUserName = async () => {
-      const user = await getUserFromApi(post.userId);
+      const user = await getUserFromApi(userId);
       setName(user.name);
     };
     getUserName();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const commentsStats = JSON.stringify(post.comments.length);
+  const commentsStats = JSON.stringify(comments.length);
 
   return (
     <View style={styles.container}>
@@ -31,17 +36,13 @@ const PostCard = ({post}: Props) => {
         <Avatar />
         <View>
           <Text style={styles.name}>{name}</Text>
-          <Text style={styles.date}>{post.publicationDate}</Text>
+          <Text style={styles.date}>{publicationDate}</Text>
         </View>
       </View>
       <View style={styles.content}>
-        {post.text !== '' ? (
-          <Text style={styles.text}>{post.text}</Text>
-        ) : (
-          <></>
-        )}
-        {post.imageUri !== '' ? (
-          <Image source={{uri: post.imageUri}} style={styles.image} />
+        {text !== '' ? <Text style={styles.text}>{text}</Text> : <></>}
+        {imageUri !== '' ? (
+          <Image source={{uri: imageUri}} style={styles.image} />
         ) : (
           <Image
             source={require('../../assets/illustrations/catAvatar.png')}
@@ -56,9 +57,14 @@ const PostCard = ({post}: Props) => {
         />
       </View>
 
-      <CommentsModal isVisible={visible} handleClose={closeModal} post={post} />
+      <CommentsModal
+        isVisible={visible}
+        handleClose={closeModal}
+        postId={id}
+        postComments={comments}
+      />
     </View>
   );
 };
 
-export default PostCard;
+export default memo(PostCard);
