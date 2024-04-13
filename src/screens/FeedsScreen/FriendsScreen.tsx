@@ -24,7 +24,7 @@ const FriendsScreen = () => {
   const friends = useMemo(
     () =>
       allUsers.filter(person => signedInUser.friendsIds.includes(person.id)),
-    [signedInUser.friendsIds],
+    [signedInUser.friendsIds, allUsers],
   );
 
   return (

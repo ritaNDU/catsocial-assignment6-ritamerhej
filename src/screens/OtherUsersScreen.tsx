@@ -28,7 +28,7 @@ const OtherUsersScreen = () => {
           !signedInUser.friendsIds.includes(person.id) &&
           person.id !== signedInUser.id,
       ),
-    [signedInUser.friendsIds],
+    [signedInUser.friendsIds, allUsers],
   );
 
   return (
