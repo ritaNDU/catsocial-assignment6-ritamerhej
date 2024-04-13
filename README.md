@@ -1,5 +1,7 @@
 # Cutie Kat
-## Profiling Session 
+
+## Profiling Session
+
 Profiling data is stored in a file called: profiling-data.04-10-2024.13-59-33.json
 
 Upload it to react-devtools's profiler to check the profiling session.
@@ -9,14 +11,20 @@ IMG-20240410-WA0011.jpg
 
 I got these results by using the app as a normal user would, from login till logout.
 
-## Testing Accounts 
-### emails: 
+## Testing Accounts
+
+### emails:
+
 Rita.merhej@hotmail.com Roy.merhej@hotmail.com Bisse.merhej@hotmail.com
 Chupa.merhej@hotmail.com
+
 ### Password for all accounts:
+
 1234567890
 
 ### Links
+
+You have to be signed in to be able to access other users profiles, so please make sure to be signed in, otherwise this won't work.
 Rita:
 cutiekat://profile/1
 
@@ -29,12 +37,12 @@ cutiekat://profile/3
 Chupa:
 cutiekat://profile/4
 
-
 ## Description
 
 Cutie Kat is a social media app for kids to share their favorite pets pictures. Kids can upload their cat's (or dog's, eventhough they're not welcome between felines...) cutest pictures, follow their friends and have them see their cutie cat's cuteness. Kids can also write random cat quotes, without pictures. When they add no picture, our mascot "Bisse the Cat" will be showing in their new Meow.
 
 ## Definition
+
 A Meow: it's a post in regular Social Media jargon.
 
 ## How to run the code
@@ -62,7 +70,7 @@ The token was not being loaded properly on app start. At the end I figured out t
 
 ### Posts and Users fetching
 
-As sorting and filtering was not handled by the api as I needed it, I had a rough time fetching posts and users and adding pagination. At the end, I added a big limit for posts to be able to fetch all posts while keeping pagination functional. I wanted to create my own api with flask, but I ran out of time. 
+As sorting and filtering was not handled by the api as I needed it, I had a rough time fetching posts and users and adding pagination. At the end, I added a big limit for posts to be able to fetch all posts while keeping pagination functional. I wanted to create my own api with flask, but I ran out of time.
 There's still a bug. If you create a new user, and that new user creates a post, and that post is the 16th (limit + 1), it won't show on the user's profile. I couldn't find a way to fix this while keeping pagination.
 
 ### Notification Problem
