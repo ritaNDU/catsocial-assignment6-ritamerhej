@@ -13,7 +13,7 @@ const useManagePostsFetching = () => {
     setIsLoading(true);
     const posts = await getPostsFromApi(page);
     setIsLoading(false);
-    if (page > paginationData.totalPages) {
+    if (posts.length === 0 || allPosts.length % POSTS_LIMIT !== 0) {
       setEndReached(true);
       return;
     }
